@@ -20,6 +20,38 @@ enum Periods:Int {
     case P6 = 7
     case A1 = 8
 }
+
+struct LearningObjective {
+    public var id: String
+    public var title: String
+    
+    init (id _id:String, title _title:String){
+        self.id = _id
+        self.title = _title
+    }
+}
+
+struct Lesson {
+    
+    public var id: String
+    public var subject: String
+    public var unit: String
+    public var title: String
+    public var learningObjectives: [LearningObjective]
+    public var resources:[String]
+    
+    init(id _id:String, subject _sub:String, unit _unit:String, title _title:String, learningObjectives _lo:[LearningObjective], resources _resources:[String]){
+        self.id = _id
+        self.subject = _sub
+        self.unit = _unit
+        self.title = _title
+        self.learningObjectives = _lo
+        self.resources = _resources
+    }
+    
+}
+
+
 class PlannerSlot {
     
     public var start:Date = Date()
@@ -29,15 +61,15 @@ class PlannerSlot {
     public var className:String = "Not Set"
     public var roomName:String = "Not Set"
     
-    public var lessonTitle:String = "Not Set"
+    public var lesson:Lesson
     
-    init (start:Date, end:Date, title:String, className:String, roomName:String, lessonTitle:String){
+    init (start:Date, end:Date, title:String, className:String, roomName:String, lesson:Lesson){
         self.start = start
         self.end = end
         self.title = title
         self.className = className
         self.roomName = roomName
-        self.lessonTitle = lessonTitle
+        self.lesson = lesson
     }
 }
 
@@ -47,10 +79,7 @@ class PlannerDay {
     
     let dateFormatter = DateFormatter()
     
-    
-    init(){
-        self.date = Date()
-        
+    func generateDummyData() {
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         
         let title = ["P1", "P2", "BREAK1", "P3", "P4", "BREAK2", "P5", "P6", "AF1"]
@@ -58,18 +87,21 @@ class PlannerDay {
         let subjectNames = ["Maths", "Comp Sci", "Computing"]
         let classNames:[String] = ["10C", "7A", "8B", "Free" ]
         let roomNames:[String] = ["107", "105", "PC1", ""]
-        let lessonTitles:[String] = ["Fractions", "Decimals"]
+        let lessonTitles:[String] = ["Fractions", "Decimals", "Pie Charts", "Sequences"]
         
         var lastTimeUsed: Date = dateFormatter.date(from: "2018/02/08 07:25")!
         
         var randomIndex: Int
         
         for i in 0..<title.count {
-            
+        
             let endTime = lastTimeUsed.addingTimeInterval(TimeInterval(times[i] * 60))
             
             randomIndex = Int(arc4random_uniform(UInt32(classNames.count - 1)))
             let className = classNames[randomIndex]
+            
+            randomIndex = Int(arc4random_uniform(UInt32(subjectNames.count - 1)))
+            let subjectName = subjectNames[randomIndex]
             
             randomIndex = Int(arc4random_uniform(UInt32(roomNames.count - 1)))
             let roomName = roomNames[randomIndex]
@@ -83,14 +115,15 @@ class PlannerDay {
                 title:title[i],
                 className:className,
                 roomName: roomName,
-                lessonTitle: lessonTitle
-            ))
+                lesson: Lesson(id: "L" + String(i), subject: subjectName, unit: "Unit 1",  title: lessonTitle,learningObjectives: [], resources: [])
+                ))
             
             lastTimeUsed = endTime
-            // initialse start and end time
-            // generate random data
-            
         }
-        
+    }
+    
+    init(){
+        self.date = Date()
+        generateDummyData()
     }
 }

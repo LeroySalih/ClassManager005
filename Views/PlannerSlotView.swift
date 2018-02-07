@@ -68,11 +68,11 @@ class PlannerSlotView : UIView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let dateFormatter:DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-        delegate?.onPlannerCellClicked(plannerSlot)
+        delegate?.onPlannerCellClicked(plannerSlot!)
         //print ("Touched \(dateFormatter.string(from: plannerSlot!.start))")
     }
     
-    func addSubviews() {
+    func updateDisplay (){
         
         let dateFormatter:DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -80,6 +80,12 @@ class PlannerSlotView : UIView
         plannerSlotTitleLabel.text = "\(dateFormatter.string(from: plannerSlot!.start)) to \(dateFormatter.string(from: plannerSlot!.end)) (\(plannerSlot!.title))"
         classLabel.text = plannerSlot!.className
         roomLabel.text = plannerSlot!.roomName
+        
+    }
+    
+    func addSubviews() {
+        
+        updateDisplay()
         
         addSubview(plannerSlotTitleLabel)
         addSubview(classLabel)
