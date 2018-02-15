@@ -27,15 +27,7 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     }()
     
     
-    var displayPageView:PlannerPageView = {
-      
-        let view = PlannerPageView(frame: CGRect(x: 0, y: 0, width: 200, height: 500))
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.backgroundColor = .white
-        
-        return view
-    }()
+    
     
     var sideMenuBarVC:SideMenuVC = {
         var sideMenuVC = SideMenuVC()
@@ -130,7 +122,8 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     ///////////////////////////////
     func onPlannerCellClicked(_ plannerSlot: PlannerSlot?) {
         print("[BaseViewController] Received Planner Slot Clicked")
-        displayPageView.plannerSlot = plannerSlot
+        plannerPageVC.plannerSlot = plannerSlot
+    //    displayPageView.plannerSlot = plannerSlot
     }
 
 

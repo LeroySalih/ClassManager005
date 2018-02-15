@@ -31,6 +31,7 @@
 		499A86E32034BAF900FDB99B /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86E22034BAF900FDB99B /* SideMenuVC.swift */; };
 		499A86E52034BD3500FDB99B /* PlannerPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86E42034BD3500FDB99B /* PlannerPageVC.swift */; };
 		499A86E720354D6700FDB99B /* SideMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86E620354D6700FDB99B /* SideMenuDelegate.swift */; };
+		49EDD11620359BE1004E0434 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EDD11520359BE1004E0434 /* UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		499A86E22034BAF900FDB99B /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		499A86E42034BD3500FDB99B /* PlannerPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageVC.swift; sourceTree = "<group>"; };
 		499A86E620354D6700FDB99B /* SideMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDelegate.swift; sourceTree = "<group>"; };
+		49EDD11520359BE1004E0434 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		490975E3202A0DEB00DDA5B2 = {
 			isa = PBXGroup;
 			children = (
+				49EDD11420359BCC004E0434 /* extensions */,
 				499A86DD20349D0C00FDB99B /* protocols */,
 				4999E45820334712005B34D5 /* Components */,
 				4902384E202AEE0A002DEE70 /* Protocols */,
@@ -168,6 +171,14 @@
 			);
 			name = protocols;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		49EDD11420359BCC004E0434 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49EDD11520359BE1004E0434 /* UILabel.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 				4917B4A8203047950048F1A3 /* PlannerSlotDetailHeaderView.swift in Sources */,
 				49023850202AEE32002DEE70 /* PlannerSlotDelegate.swift in Sources */,
 				499A86DA20349C1700FDB99B /* LearningObjective.swift in Sources */,
+				49EDD11620359BE1004E0434 /* UILabel.swift in Sources */,
 				4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */,
 				4999E45C20334949005B34D5 /* LearningObjectivesView.swift in Sources */,
 				499A86DC20349C7F00FDB99B /* Periods.swift in Sources */,
