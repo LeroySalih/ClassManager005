@@ -18,9 +18,11 @@ class PlannerSlotView : UIView
     
     var plannerSlot: PlannerSlot? {
         didSet{
+            updateDisplay()
             setNeedsDisplay()
         }
     }
+
     
     var plannerSlotTitleLabel : UILabel = {
         var textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -47,9 +49,12 @@ class PlannerSlotView : UIView
     }()
     
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        addSubviews()
+        //updateDisplay() 
         backgroundColor = .green
     }
     
@@ -58,6 +63,8 @@ class PlannerSlotView : UIView
         self.init(frame: CGRect.zero)
         self.plannerSlot = plannerSlot
         addSubviews()
+        updateDisplay()
+        backgroundColor = .green
         
     }
     
@@ -85,8 +92,6 @@ class PlannerSlotView : UIView
     
     func addSubviews() {
         
-        updateDisplay()
-        
         addSubview(plannerSlotTitleLabel)
         addSubview(classLabel)
         addSubview(roomLabel)
@@ -109,9 +114,7 @@ class PlannerSlotView : UIView
       //      roomLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             roomLabel.heightAnchor.constraint(equalToConstant:22),
             
-            
-            
-        
+
             ])
     }
     
