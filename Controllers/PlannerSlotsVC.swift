@@ -22,7 +22,7 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
             buildUI()
         }
     }
-    
+        
     func createStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false

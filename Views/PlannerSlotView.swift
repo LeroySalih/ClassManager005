@@ -18,8 +18,12 @@ class PlannerSlotView : UIView
     
     var plannerSlot: PlannerSlot? {
         didSet{
+            print("[PlannerSlotView] removing sub views")
+            subviews.forEach({$0.removeFromSuperview()})
+            
+            addSubviews()
             updateDisplay()
-            setNeedsDisplay()
+            
         }
     }
 
@@ -48,12 +52,9 @@ class PlannerSlotView : UIView
         return textLabel
     }()
     
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
+        //addSubviews()
         //updateDisplay() 
         backgroundColor = .green
     }

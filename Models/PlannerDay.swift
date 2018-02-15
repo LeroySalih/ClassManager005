@@ -58,7 +58,12 @@ class PlannerDay {
                                 LearningObjective(id: "LO1", title:lessonTitle),
                                 LearningObjective(id: "LO1", title:lessonTitle)
                     ],
-                               resources: [])
+                               resources: [
+                                Resource(id: "R1", title: "Resource 1"),
+                                Resource(id: "R2", title: "Resource 2"),
+                                Resource(id: "R3", title: "Resource 3"),
+                                
+                    ])
             ))
             
             lastTimeUsed = endTime

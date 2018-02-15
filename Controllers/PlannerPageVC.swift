@@ -11,18 +11,40 @@ import UIKit
 
 class PlannerPageVC : UIViewController
 {
+    //////////////////////////////////////////
+    // UI Components
+    //////////////////////////////////////////
     
-    override func loadView() {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+    var plannerPageView : PlannerPageView = {
         
-        view.backgroundColor = .red
+        var view: PlannerPageView = PlannerPageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view = view
+        return view
+        
+    }()
+    
+    //////////////////////////////////////////
+    // View Controller State
+    //////////////////////////////////////////
+    
+    public var plannerSlot:PlannerSlot? {
+        didSet {
+            // Update the View.
+            print ("[PlannerPage] Assinging Planner Slot to View")
+            plannerPageView.plannerSlot = plannerSlot
+        }
+    }
+    
+    override func loadView() {
+        print ("[PlannerPage] Creating Planner Page View")
+        
+        self.view = plannerPageView
     }
     
     override func viewDidLoad() {
-        print ("[Planner Page] PlannerPageVC View Loaded")
+    
+        print ("[Planner Page] View loaded")
         
     }
 }

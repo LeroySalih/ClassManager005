@@ -1,21 +1,19 @@
-//
-//  PlannerSlotDetailView.swift
-//  ClassManager005
-//
-//  Created by Leroy Salih on 07/02/2018.
-//  Copyright © 2018 Leroy Salih. All rights reserved.
-//
-
-import Foundation
+//: A UIKit based Playground for presenting user interface
+  
 import UIKit
+import PlaygroundSupport
 
+extension UILabel {
+    func headingFont() -> UIFont? {return UIFont(name:"Avenir", size: 36)}
+    func subHeadingFont() -> UIFont? {return UIFont(name:"Avenir", size: 20)}
+}
 
 class PlannerPageView : UIView
 {
     
     var learningObjectives:[String] = ["Learing Objective 1", "Learing Objective 2",]
     var resources:[String] = ["Resource 1", "Resource 2",]
-    
+
     var classLabel:UILabel = {
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,13 +21,13 @@ class PlannerPageView : UIView
         label.textAlignment = .center
         return label
     }()
-    
+
     var roomLabel:UILabel = {
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.subHeadingFont()
         label.textAlignment = .center
-        
+
         return label
     }()
     
@@ -37,7 +35,7 @@ class PlannerPageView : UIView
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.subHeadingFont()
-        //    label.textAlignment = .center
+    //    label.textAlignment = .center
         
         return label
     }()
@@ -46,7 +44,7 @@ class PlannerPageView : UIView
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.subHeadingFont()
-        //    label.textAlignment = .center
+    //    label.textAlignment = .center
         
         return label
     }()
@@ -55,7 +53,7 @@ class PlannerPageView : UIView
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.subHeadingFont()
-        //   label.textAlignment = .center
+     //   label.textAlignment = .center
         
         return label
     }()
@@ -77,21 +75,21 @@ class PlannerPageView : UIView
         
         return label
     }()
-    
+
     func updateUI(){
-        classLabel.text = plannerSlot.className
+        classLabel.text = "10C"
         classLabel.sizeToFit()
-        
-        roomLabel.text = plannerSlot.roomName
+
+        roomLabel.text = "PC105"
         roomLabel.sizeToFit()
         
-        lessonLabel.text = plannerSlot.lesson.title
+        lessonLabel.text = "Multiplying Decimal Numbers"
         lessonLabel.sizeToFit()
         
-        unitLabel.text = plannerSlot.lesson.unit
+        unitLabel.text = "Numbers"
         unitLabel.sizeToFit()
         
-        subjectLabel.text = plannerSlot.lesson.subject
+        subjectLabel.text = "Math"
         unitLabel.sizeToFit()
         
         loLabel.text = "Learning Objectives"
@@ -101,9 +99,9 @@ class PlannerPageView : UIView
         resourcesLabel.sizeToFit()
         
     }
-    
+
     func buildUI(){
-        
+    
         let classStackView = UIStackView()
         classStackView.translatesAutoresizingMaskIntoConstraints = false
         classStackView.axis = .vertical
@@ -125,12 +123,12 @@ class PlannerPageView : UIView
         loStackView.translatesAutoresizingMaskIntoConstraints = false
         loStackView.axis = .vertical
         
-        
+    
         addSubview(loLabel)
-        plannerSlot.lesson.learningObjectives.forEach({
+        learningObjectives.forEach({
             
             let label:UILabel = UILabel()
-            label.text = $0.title
+            label.text = $0
             label.sizeToFit()
             loStackView.addArrangedSubview(label)
         })
@@ -144,9 +142,9 @@ class PlannerPageView : UIView
         resourcesStackView.axis = .vertical
         
         
-        plannerSlot.lesson.resources.forEach({
+        resources.forEach({
             let label:UILabel = UILabel()
-            label.text = $0.title
+            label.text = $0
             label.sizeToFit()
             resourcesStackView.addArrangedSubview(label)
         })
@@ -155,17 +153,17 @@ class PlannerPageView : UIView
         
         NSLayoutConstraint.activate([
             classStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            //    classStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+        //    classStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             classStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            //   classStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+         //   classStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             lessonStackView.topAnchor.constraint(equalTo:safeAreaLayoutGuide.topAnchor),
             lessonStackView.leadingAnchor.constraint(equalTo: classStackView.trailingAnchor, constant:10),
             
             loLabel.topAnchor.constraint(equalTo: classStackView.bottomAnchor, constant: 10),
             loLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             loStackView.topAnchor.constraint(equalTo:loLabel.bottomAnchor),
-            loStackView.leadingAnchor.constraint(equalTo:safeAreaLayoutGuide.leadingAnchor),
-            loStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+        loStackView.leadingAnchor.constraint(equalTo:safeAreaLayoutGuide.leadingAnchor),
+        loStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
             resourcesLabel.topAnchor.constraint(equalTo: loStackView.bottomAnchor, constant: 10),
             resourcesLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
@@ -174,42 +172,42 @@ class PlannerPageView : UIView
             
             resourcesStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             
-            ])
+        ])
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .green
+        updateUI()
+        buildUI()
     }
     
     convenience init() {
         self.init(frame: CGRect.zero)
         backgroundColor = .green
+        updateUI()
+        buildUI()
     }
     
-    required init(coder aDecoder: NSCoder) {
+     required init(coder aDecoder: NSCoder) {
         fatalError("This class does not support NSCoding")
-    }
-    
-    public var plannerSlot: PlannerSlot! {
-        didSet {
-            // remove the sub views
-            subviews.forEach({$0.removeFromSuperview()})
-            
-            // update the text labels
-            updateUI()
-            
-            // construct and present the UI
-            buildUI()
-        }
-    }
-    
-    convenience init(_ plannerSlot:PlannerSlot)
-    {
-        self.init(frame: CGRect.zero)
-        self.plannerSlot = plannerSlot
     }
     
 }
 
+class MyViewController : UIViewController {
+    override func loadView() {
+        let view = UIView()
+        view.backgroundColor = .white
+
+        let page = PlannerPageView(frame: CGRect(x: 10, y: 10, width: 400, height: 400))
+        
+        view.addSubview(page)
+        
+        self.view = view
+    }
+}
+
+// Present the view controller in the Live View window
+PlaygroundPage.current.liveView = MyViewController()
