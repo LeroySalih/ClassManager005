@@ -1,6 +1,0 @@
-framework module Pods_ClassManager005 {
-  umbrella header "Pods-ClassManager005-umbrella.h"
-
-  export *
-  module * { export * }
-}
