@@ -9,9 +9,45 @@
 import Foundation
 import UIKit
 
-class SideMenuVC : UIViewController
+class SideMenuVC : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 {
     public var sideMenuEventsDelegate:SideMenuDelegate?
+    
+    //////////////////////////////////////
+    // UIPicker Functions
+    //////////////////////////////////////
+    
+    public var pickableDates:[String] = [] {
+        didSet {
+            pickerView.reloadAllComponents()
+        }
+    }
+    
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickableDates.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickableDates[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("[SideMenuVC]: Date Changed")
+        if sideMenuEventsDelegate != nil {
+            print("[SideMenuVC]: calling parent Init Clicked")
+            sideMenuEventsDelegate?.onDateChanged(docId: pickableDates[row])
+        } else {
+            print("[SideMenuVC]: No Delegate Found for onDateChanged Event")
+        }
+    }
+    
+    
     
     @objc
     func buttonClicked(){
@@ -77,6 +113,14 @@ class SideMenuVC : UIViewController
         return button
     }()
     
+    var pickerView:UIPickerView = {
+        var picker:UIPickerView = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false 
+        picker.backgroundColor = .white
+        
+        return picker
+    }()
+    
     override func loadView() {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
         
@@ -88,25 +132,34 @@ class SideMenuVC : UIViewController
     
     override func viewDidLoad() {
         print ("[SideMenuVC] View Loaded")
+        self.view.addSubview(pickerView)
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         self.view.addSubview(initButton)
         self.view.addSubview(getDataButton)
         self.view.addSubview(addDataButton)
         
         NSLayoutConstraint.activate([
-            initButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            
+            pickerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            pickerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            pickerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            pickerView.heightAnchor.constraint(equalToConstant: 50),
+            
+            initButton.topAnchor.constraint(equalTo: pickerView.bottomAnchor, constant: 5),
             initButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            initButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5),
+            initButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             initButton.heightAnchor.constraint(equalToConstant: 50),
             
             getDataButton.topAnchor.constraint(equalTo: initButton.bottomAnchor, constant: 5),
             getDataButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            getDataButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5),
+            getDataButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             getDataButton.heightAnchor.constraint(equalToConstant: 50),
             
             addDataButton.topAnchor.constraint(equalTo: getDataButton.bottomAnchor, constant: 5),
             addDataButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            addDataButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5),
+            addDataButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             addDataButton.heightAnchor.constraint(equalToConstant: 50),
             
             

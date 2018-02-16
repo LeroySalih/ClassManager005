@@ -42,5 +42,9 @@ let dtComponents = Calendar.current.dateComponents([.year, .month], from: dt)
 
 print ("The Year of the date is \(dtComponents.year!)")
 
+let day:TimeInterval = 60 * 60 * 24
+let nextDate = Date(timeInterval: day, since: dt)
+print (nextDate)
+
 
 

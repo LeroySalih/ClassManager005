@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controllers/BaseViewController.swift"
-            timestampString = "540476558.891373"
+            filePath = "Models/PlannerDay.swift"
+            timestampString = "540473395.612018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "onGetDataClicked()"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "create(forDate:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Models/PlannerDay.swift"
-            timestampString = "540473395.612018"
+            filePath = "Controllers/BaseViewController.swift"
+            timestampString = "540496040.5732321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "create(forDate:from:)"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "loadDocIds()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

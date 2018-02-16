@@ -13,4 +13,6 @@ protocol SideMenuDelegate {
     func onInitClicked()
     func onGetDataClicked()
     func onAddDataClicked()
+    
+    func onDateChanged(docId:String)
 }
