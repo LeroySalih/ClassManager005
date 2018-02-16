@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class PlannerSlot {
+struct PlannerSlot {
     
     public var start:Date = Date()
     public var end:Date = Date()
@@ -19,16 +19,31 @@ class PlannerSlot {
     public var className:String = "Not Set"
     public var roomName:String = "Not Set"
     
-    public var lesson:Lesson
+    public var subject:String = "Not Set"
+    public var unit:String = "Not Set"
+    public var lesson:String = "Not Set"
     
-    init (start:Date, end:Date, title:String, className:String, roomName:String, lesson:Lesson){
+    public var learningObjectives:[String] = []
+    public var resources:[String] = []
+    
+    //public var lesson:Lesson
+    
+    
+    
+    init (start:Date, end:Date, title:String, className:String, roomName:String, subject:String, unit:String, lesson:String,
+          learningObjectives:[String], resources:[String]){
         self.start = start
         self.end = end
         self.title = title
         self.className = className
         self.roomName = roomName
+        self.subject = subject
+        self.unit = unit
         self.lesson = lesson
+        self.learningObjectives = learningObjectives
+        self.resources = resources
     }
+    
 }
 
 

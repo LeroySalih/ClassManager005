@@ -10,6 +10,7 @@ import Foundation
 
 protocol SideMenuDelegate {
     
-    func onOnitClicked()
-    
+    func onInitClicked()
+    func onGetDataClicked()
+    func onAddDataClicked()
 }

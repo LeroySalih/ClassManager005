@@ -7,14 +7,52 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class PlannerDay {
+    
+    static func create(forDate plannerDate:Date, from snapshot: QuerySnapshot) -> PlannerDay{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-mm-dd HH:MM:SS"
+        
+        let plannerDay:PlannerDay = PlannerDay()
+        //dateFormatter.date(from: document.documentID)!
+        
+        plannerDay.date = plannerDate
+        
+        for document in snapshot.documents {
+            
+            let docID = document.documentID // P1
+            let startTime:Date = (document.data()["startTime"] as? Date) ?? Date()
+            let endTime:Date = (document.data()["endTime"] as? Date) ?? Date()
+            let className:String = (document.data()["className"] as? String) ?? "Not Set"
+            let roomName:String = (document.data()["roomName"] as? String) ?? "Not Set"
+            let subject:String = (document.data()["subject"] as? String) ?? "Not Set"
+            let unit:String = (document.data()["unit"] as? String) ?? "Not Set"
+            let lessonTitle:String = (document.data()["unit"] as? String) ?? "Not Set"
+            
+            let learningObjectives:[String] = (document.data()["learningObjectives"] as? [String]) ?? []
+            let resources:[String] = (document.data()["resources"] as? [String]) ?? []
+            
+            print ("Reporting: \(docID) \(startTime) \(endTime) \(learningObjectives.count) \(resources.count)")
+            let pSlot = PlannerSlot(start: startTime, end: endTime, title: docID, className: className, roomName: roomName, subject: subject, unit: unit, lesson: lessonTitle, learningObjectives:learningObjectives, resources:resources)
+        
+            plannerDay.slots.append(pSlot)
+        }
+
+        return plannerDay
+        
+    }
+    
+    
     public var date:Date = Date()
     public var slots:[PlannerSlot] = []
     
     let dateFormatter = DateFormatter()
     
     func generateDummyData() {
+        /*
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         
         let title = ["P1", "P2", "BREAK1", "P3", "P4", "BREAK2", "P5", "P6", "AF1"]
@@ -68,10 +106,16 @@ class PlannerDay {
             
             lastTimeUsed = endTime
         }
+ */
     }
     
     init(){
         self.date = Date()
         generateDummyData()
+    }
+    
+    init(plannerDayID:String, data:[String:Any]){
+        
+        
     }
 }

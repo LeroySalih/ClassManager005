@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C014B54D3C57E1CC9DDEE41 /* Pods_ClassManager005.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A7A4FD9E1E7330C0B66C76 /* Pods_ClassManager005.framework */; };
 		49023848202A1F4B002DEE70 /* PlannerSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49023847202A1F4B002DEE70 /* PlannerSlot.swift */; };
 		4902384B202A2FA2002DEE70 /* PlannerSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902384A202A2FA2002DEE70 /* PlannerSlotView.swift */; };
 		4902384D202AE76E002DEE70 /* PlannerPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902384C202AE76E002DEE70 /* PlannerPageView.swift */; };
@@ -32,9 +33,14 @@
 		499A86E52034BD3500FDB99B /* PlannerPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86E42034BD3500FDB99B /* PlannerPageVC.swift */; };
 		499A86E720354D6700FDB99B /* SideMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86E620354D6700FDB99B /* SideMenuDelegate.swift */; };
 		49EDD11620359BE1004E0434 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EDD11520359BE1004E0434 /* UILabel.swift */; };
+		49FC37372035C941003FE0B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FC37362035C941003FE0B9 /* GoogleService-Info.plist */; };
+		49FC37392036CB83003FE0B9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC37382036CB83003FE0B9 /* Date.swift */; };
+		49FC373B2036FE68003FE0B9 /* TeacherTimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC373A2036FE68003FE0B9 /* TeacherTimetable.swift */; };
+		49FC373D2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FC373C2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38B392BB3293677234EA2932 /* Pods-ClassManager005.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassManager005.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClassManager005/Pods-ClassManager005.debug.xcconfig"; sourceTree = "<group>"; };
 		49023847202A1F4B002DEE70 /* PlannerSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlot.swift; sourceTree = "<group>"; };
 		4902384A202A2FA2002DEE70 /* PlannerSlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotView.swift; sourceTree = "<group>"; };
 		4902384C202AE76E002DEE70 /* PlannerPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageView.swift; sourceTree = "<group>"; };
@@ -62,6 +68,12 @@
 		499A86E42034BD3500FDB99B /* PlannerPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageVC.swift; sourceTree = "<group>"; };
 		499A86E620354D6700FDB99B /* SideMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDelegate.swift; sourceTree = "<group>"; };
 		49EDD11520359BE1004E0434 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		49FC37362035C941003FE0B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49FC37382036CB83003FE0B9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		49FC373A2036FE68003FE0B9 /* TeacherTimetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTimetable.swift; sourceTree = "<group>"; };
+		49FC373C2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotSerialiser.swift; sourceTree = "<group>"; };
+		8F242B02D11E9FB158F3B6C9 /* Pods-ClassManager005.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassManager005.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClassManager005/Pods-ClassManager005.release.xcconfig"; sourceTree = "<group>"; };
+		B6A7A4FD9E1E7330C0B66C76 /* Pods_ClassManager005.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassManager005.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C014B54D3C57E1CC9DDEE41 /* Pods_ClassManager005.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +97,8 @@
 				499A86D720349BFF00FDB99B /* Resource.swift */,
 				499A86D920349C1700FDB99B /* LearningObjective.swift */,
 				499A86DB20349C7F00FDB99B /* Periods.swift */,
+				49FC373A2036FE68003FE0B9 /* TeacherTimetable.swift */,
+				49FC373C2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +128,7 @@
 		490975E3202A0DEB00DDA5B2 = {
 			isa = PBXGroup;
 			children = (
+				49FC37362035C941003FE0B9 /* GoogleService-Info.plist */,
 				49EDD11420359BCC004E0434 /* extensions */,
 				499A86DD20349D0C00FDB99B /* protocols */,
 				4999E45820334712005B34D5 /* Components */,
@@ -122,6 +138,8 @@
 				49097601202A0E5F00DDA5B2 /* Controllers */,
 				490975EE202A0DEB00DDA5B2 /* ClassManager005 */,
 				490975ED202A0DEB00DDA5B2 /* Products */,
+				81179B6EC2D8337A3679F9F8 /* Pods */,
+				C9CEE0B9F2A4D73D90A6C143 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,8 +195,26 @@
 			isa = PBXGroup;
 			children = (
 				49EDD11520359BE1004E0434 /* UILabel.swift */,
+				49FC37382036CB83003FE0B9 /* Date.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		81179B6EC2D8337A3679F9F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38B392BB3293677234EA2932 /* Pods-ClassManager005.debug.xcconfig */,
+				8F242B02D11E9FB158F3B6C9 /* Pods-ClassManager005.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C9CEE0B9F2A4D73D90A6C143 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6A7A4FD9E1E7330C0B66C76 /* Pods_ClassManager005.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 490975FE202A0DEB00DDA5B2 /* Build configuration list for PBXNativeTarget "ClassManager005" */;
 			buildPhases = (
+				CAD43203272C511DB5725CAE /* [CP] Check Pods Manifest.lock */,
 				490975E8202A0DEB00DDA5B2 /* Sources */,
 				490975E9202A0DEB00DDA5B2 /* Frameworks */,
 				490975EA202A0DEB00DDA5B2 /* Resources */,
+				6F1C0B7CC9C130C56E8C3648 /* [CP] Embed Pods Frameworks */,
+				06A8AB25ED3DDA5E6731AA18 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490975FA202A0DEB00DDA5B2 /* LaunchScreen.storyboard in Resources */,
+				49FC37372035C941003FE0B9 /* GoogleService-Info.plist in Resources */,
 				490975F7202A0DEB00DDA5B2 /* Assets.xcassets in Resources */,
 				490975F5202A0DEB00DDA5B2 /* Main.storyboard in Resources */,
 			);
@@ -248,22 +288,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06A8AB25ED3DDA5E6731AA18 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClassManager005/Pods-ClassManager005-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F1C0B7CC9C130C56E8C3648 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ClassManager005/Pods-ClassManager005-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClassManager005/Pods-ClassManager005-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAD43203272C511DB5725CAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ClassManager005-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		490975E8202A0DEB00DDA5B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FC37392036CB83003FE0B9 /* Date.swift in Sources */,
 				499A86E52034BD3500FDB99B /* PlannerPageVC.swift in Sources */,
 				49023848202A1F4B002DEE70 /* PlannerSlot.swift in Sources */,
 				499A86D420349BAF00FDB99B /* PlannerDay.swift in Sources */,
 				499A86E720354D6700FDB99B /* SideMenuDelegate.swift in Sources */,
 				4902384B202A2FA2002DEE70 /* PlannerSlotView.swift in Sources */,
 				490975F2202A0DEB00DDA5B2 /* BaseViewController.swift in Sources */,
+				49FC373D2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift in Sources */,
 				4902384D202AE76E002DEE70 /* PlannerPageView.swift in Sources */,
 				4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */,
 				490975F0202A0DEB00DDA5B2 /* AppDelegate.swift in Sources */,
 				499A86D620349BD800FDB99B /* Lesson.swift in Sources */,
 				499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */,
+				49FC373B2036FE68003FE0B9 /* TeacherTimetable.swift in Sources */,
 				4917B4A8203047950048F1A3 /* PlannerSlotDetailHeaderView.swift in Sources */,
 				49023850202AEE32002DEE70 /* PlannerSlotDelegate.swift in Sources */,
 				499A86DA20349C1700FDB99B /* LearningObjective.swift in Sources */,
@@ -409,6 +522,7 @@
 		};
 		490975FF202A0DEB00DDA5B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38B392BB3293677234EA2932 /* Pods-ClassManager005.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -424,6 +538,7 @@
 		};
 		49097600202A0DEB00DDA5B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F242B02D11E9FB158F3B6C9 /* Pods-ClassManager005.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

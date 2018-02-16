@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate {
     
@@ -108,11 +109,72 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     //
     ///////////////////////////////
     
-    func onOnitClicked() {
-        print("Button Clicked [from Parent]")
+    func onInitClicked() {
+        print("[BaseViewController]: OnInitButton Clicked")
         
         // Initialise View Controller
         plannerSlotsVC.plannerSlots = plannerDay.slots
+        
+    }
+    
+    func onGetDataClicked(){
+        print("[BaseViewController]: onGetDataButton Clicked")
+        
+        let db = Firestore.firestore()
+        db.collection("PSlots")
+            .document("2018-01-01")
+            .collection("Slots")
+            .order(by: "startTime")
+            .getDocuments(){ (snapshot, error) in
+            
+            if error != nil {
+                print (error!)
+            } else {
+                
+                let plannerDay:PlannerDay = PlannerDay.create(forDate:Date(), from: snapshot!)
+                self.plannerSlotsVC.plannerSlots = plannerDay.slots
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    func addWeeklyTimetable (firstSunday:Date){
+        
+    }
+    
+    func onAddDataClicked(){
+        
+        // Create the PlannerSlots, populated with known Timetable Details
+        let firstSunday:Date = Date.createDate(year:2018, month: 01, day: 01, hour: 07, min: 0)
+        let plannerSlots:[PlannerSlot] = TeacherTimetable.createBlankTimetableForWeek(firstSunday: firstSunday)
+        let psSerialise:PlannerSlotSerialiser = PlannerSlotSerialiser()
+        
+        // Create connection to Firestore
+        let fs = Firestore.firestore()
+        
+        // Serialise Each Planner
+        plannerSlots.forEach { (ps) in
+            psSerialise.to(db:fs, ps: ps)
+        }
+    
+    }
+    
+    func onRemoveDataClicked() {
+        print("[BaseViewController]: onRemoveDataButton Clicked")
+        
+        let db = Firestore.firestore()
+        
+        db.collection("people").document("LA").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
         
     }
     

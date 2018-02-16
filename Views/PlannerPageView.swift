@@ -85,13 +85,13 @@ class PlannerPageView : UIView
         roomLabel.text = plannerSlot.roomName
         roomLabel.sizeToFit()
         
-        lessonLabel.text = plannerSlot.lesson.title
+        lessonLabel.text = plannerSlot.title
         lessonLabel.sizeToFit()
         
-        unitLabel.text = plannerSlot.lesson.unit
+        unitLabel.text = plannerSlot.unit
         unitLabel.sizeToFit()
         
-        subjectLabel.text = plannerSlot.lesson.subject
+        subjectLabel.text = plannerSlot.subject
         unitLabel.sizeToFit()
         
         loLabel.text = "Learning Objectives"
@@ -127,10 +127,10 @@ class PlannerPageView : UIView
         
         
         addSubview(loLabel)
-        plannerSlot.lesson.learningObjectives.forEach({
+        plannerSlot.learningObjectives.forEach({
             
             let label:UILabel = UILabel()
-            label.text = $0.title
+            label.text = $0
             label.sizeToFit()
             loStackView.addArrangedSubview(label)
         })
@@ -144,9 +144,9 @@ class PlannerPageView : UIView
         resourcesStackView.axis = .vertical
         
         
-        plannerSlot.lesson.resources.forEach({
+        plannerSlot.resources.forEach({
             let label:UILabel = UILabel()
-            label.text = $0.title
+            label.text = $0
             label.sizeToFit()
             resourcesStackView.addArrangedSubview(label)
         })

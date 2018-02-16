@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Views/PlannerSlotDetailHeaderView.swift"
-            timestampString = "540369111.091063"
+            timestampString = "540473395.611077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controllers/BaseViewController.swift"
-            timestampString = "540393053.427583"
+            timestampString = "540476558.891796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "sideMenuBarVC"
             landmarkType = "24">
          </BreakpointContent>

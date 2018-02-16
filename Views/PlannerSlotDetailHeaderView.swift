@@ -194,9 +194,9 @@ class PlannerSlotDetailHeaderView : UIView {
         
         classLabel.text = plannerSlot?.className
         roomLabel.text = plannerSlot?.roomName
-        subjectLabel.text = plannerSlot?.lesson.subject
-        unitLabel.text = plannerSlot?.lesson.unit
-        lessonTitleLabel.text = plannerSlot?.lesson.title
+        subjectLabel.text = plannerSlot?.subject
+        unitLabel.text = plannerSlot?.unit
+        lessonTitleLabel.text = plannerSlot?.title
         
         
         //classLabel.sizeToFit()
