@@ -18,6 +18,8 @@
 		490975F7202A0DEB00DDA5B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490975F6202A0DEB00DDA5B2 /* Assets.xcassets */; };
 		490975FA202A0DEB00DDA5B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490975F8202A0DEB00DDA5B2 /* LaunchScreen.storyboard */; };
 		4917B4A8203047950048F1A3 /* PlannerSlotDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */; };
+		49938994203800E30011C512 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938993203800E30011C512 /* UIViewController.swift */; };
+		49938996203804E90011C512 /* SerialiserProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938995203804E90011C512 /* SerialiserProgressDelegate.swift */; };
 		4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45920334735005B34D5 /* UILabelVA.swift */; };
 		4999E45C20334949005B34D5 /* LearningObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45B20334949005B34D5 /* LearningObjectivesView.swift */; };
 		4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45D2033F5B2005B34D5 /* ResourcesView.swift */; };
@@ -53,6 +55,8 @@
 		490975F9202A0DEB00DDA5B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		490975FB202A0DEB00DDA5B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotDetailHeaderView.swift; sourceTree = "<group>"; };
+		49938993203800E30011C512 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		49938995203804E90011C512 /* SerialiserProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialiserProgressDelegate.swift; sourceTree = "<group>"; };
 		4999E45920334735005B34D5 /* UILabelVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelVA.swift; sourceTree = "<group>"; };
 		4999E45B20334949005B34D5 /* LearningObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningObjectivesView.swift; sourceTree = "<group>"; };
 		4999E45D2033F5B2005B34D5 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				4902384F202AEE32002DEE70 /* PlannerSlotDelegate.swift */,
 				499A86DE20349D2400FDB99B /* ReceivePlannerSlots.swift */,
 				499A86E620354D6700FDB99B /* SideMenuDelegate.swift */,
+				49938995203804E90011C512 /* SerialiserProgressDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			children = (
 				49EDD11520359BE1004E0434 /* UILabel.swift */,
 				49FC37382036CB83003FE0B9 /* Date.swift */,
+				49938993203800E30011C512 /* UIViewController.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				49FC373D2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift in Sources */,
 				4902384D202AE76E002DEE70 /* PlannerPageView.swift in Sources */,
 				4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */,
+				49938996203804E90011C512 /* SerialiserProgressDelegate.swift in Sources */,
 				490975F0202A0DEB00DDA5B2 /* AppDelegate.swift in Sources */,
 				499A86D620349BD800FDB99B /* Lesson.swift in Sources */,
 				499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */,
@@ -383,6 +390,7 @@
 				49EDD11620359BE1004E0434 /* UILabel.swift in Sources */,
 				4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */,
 				4999E45C20334949005B34D5 /* LearningObjectivesView.swift in Sources */,
+				49938994203800E30011C512 /* UIViewController.swift in Sources */,
 				499A86DC20349C7F00FDB99B /* Periods.swift in Sources */,
 				499A86E32034BAF900FDB99B /* SideMenuVC.swift in Sources */,
 				499A86DF20349D2400FDB99B /* ReceivePlannerSlots.swift in Sources */,

@@ -9,10 +9,12 @@
 import UIKit
 import FirebaseFirestore
 
-class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate {
+class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate {
     
     
     
+    
+
     var plannerDay : PlannerDay = PlannerDay()
     
     let SPACER:CGFloat = 10.0
@@ -177,11 +179,14 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     
     func onAddDataClicked(){
         
+        //
+        print ("[BaseViewController] Starting Data Upload")
+        
         // Create the PlannerSlots, populated with known Timetable Details
         let firstSunday:Date = Date.createDate(year:2018, month: 01, day: 01, hour: 07, min: 0)
         let plannerSlots:[PlannerSlot] = TeacherTimetable.createBlankTimetableForWeek(firstSunday: firstSunday)
         let psSerialise:PlannerSlotSerialiser = PlannerSlotSerialiser()
-        
+        psSerialise.progressDelegate = self
         // Create connection to Firestore
         let fs = Firestore.firestore()
         
@@ -189,7 +194,9 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         plannerSlots.forEach { (ps) in
             psSerialise.to(db:fs, ps: ps)
         }
-    
+        
+        //
+        print ("[BaseViewController] Ending Data Upload")
     }
     
     func onRemoveDataClicked() {
@@ -204,7 +211,6 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
                 print("Document successfully removed!")
             }
         }
-        
     }
     
     ///////////////////////////////
@@ -215,6 +221,31 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         print("[BaseViewController] Received Planner Slot Clicked")
         plannerPageVC.plannerSlot = plannerSlot
     //    displayPageView.plannerSlot = plannerSlot
+    }
+    
+    ///////////////////////////////
+    //  Serialiser Delegate Functions
+    //
+    ///////////////////////////////
+    
+    var sv:UIView = UIView()
+    var showingWindow = false
+    
+    func opsRemaining(remaining: Int) {
+        if (remaining == 0){
+            
+            UIViewController.removeSpinner(spinner: sv)
+            showingWindow = false
+            
+            print ("finished writing data")
+        } else {
+            if (showingWindow == false){
+                sv = UIViewController.displaySpinner(onView: self.view)
+                showingWindow = true
+            }
+        
+            print ("There are \(remaining) items to write")
+        }
     }
 
 

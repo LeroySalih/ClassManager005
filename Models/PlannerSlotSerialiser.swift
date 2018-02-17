@@ -11,7 +11,19 @@ import FirebaseFirestore
 
 class PlannerSlotSerialiser {
     
+    public var progressDelegate:SerialiserProgressDelegate?
+    
+    public var writesRemaining:Int = 0 {
+        didSet {
+            guard let p = progressDelegate else {return }
+            p.opsRemaining(remaining: writesRemaining)
+        }
+    }
+    
+
     public func to (db:Firestore, ps:PlannerSlot) {
+        
+        writesRemaining += 1
         
         let docId = Date.getDateKey(from: ps.start)
             
@@ -31,6 +43,7 @@ class PlannerSlotSerialiser {
                     "resources": []
                     
                 ]){ err in
+                    self.writesRemaining -= 1
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
