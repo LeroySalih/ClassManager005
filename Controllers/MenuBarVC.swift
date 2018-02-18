@@ -23,6 +23,7 @@ class MenuBarVC : UIViewController
     
     override func viewDidLoad() {
         print ("[MenuBarVC] MenuBarVC View Loaded")
+        self.view.backgroundColor = UIColor.headerBarBackground()
         
     }
 }

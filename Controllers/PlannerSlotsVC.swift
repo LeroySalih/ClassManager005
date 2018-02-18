@@ -49,7 +49,7 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
         print ("[PlannerSlotsVC] Building UI")
         
         self.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = UIColor.appColor()
         
         // remove existing subviews (if any)
         self.view.subviews.forEach({ $0.removeFromSuperview() })

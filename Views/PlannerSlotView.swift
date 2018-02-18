@@ -56,7 +56,7 @@ class PlannerSlotView : UIView
         super.init(frame: frame)
         //addSubviews()
         //updateDisplay() 
-        backgroundColor = .green
+        
     }
     
     convenience init(_ plannerSlot: PlannerSlot) {
@@ -65,7 +65,7 @@ class PlannerSlotView : UIView
         self.plannerSlot = plannerSlot
         addSubviews()
         updateDisplay()
-        backgroundColor = .green
+        
         
     }
     
@@ -92,6 +92,10 @@ class PlannerSlotView : UIView
     }
     
     func addSubviews() {
+        
+        backgroundColor = UIColor.slotNotSelectedBackground()
+        layer.borderColor = UIColor.borderColor().cgColor
+        layer.borderWidth = 1
         
         addSubview(plannerSlotTitleLabel)
         addSubview(classLabel)

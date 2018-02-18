@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //randomViewController.view.backgroundColor = .purple
         
         window?.rootViewController = baseViewController
-        baseViewController.view.backgroundColor = .purple
+        baseViewController.view.backgroundColor = UIColor.appColor()
         return true
     }
 

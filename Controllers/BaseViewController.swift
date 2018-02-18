@@ -80,7 +80,7 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .purple
+        view.backgroundColor = UIColor.appColor()
         
         addSubviewController(vc: menuBarVC)
         addSubviewController(vc: sideMenuBarVC)
