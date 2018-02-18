@@ -45,6 +45,8 @@ class PlannerPageVC : UIViewController
     override func viewDidLoad() {
     
         print ("[Planner Page] View loaded")
+        //NSLayoutConstraint.activate(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
+        
         
     }
 }

@@ -13,17 +13,17 @@ class PlannerSlotSerialiser {
     
     public var progressDelegate:SerialiserProgressDelegate?
     
-    public var writesRemaining:Int = 0 {
+    public var opsRemaining:Int = 0 {
         didSet {
             guard let p = progressDelegate else {return }
-            p.opsRemaining(remaining: writesRemaining)
+            p.opsRemaining(remaining: opsRemaining)
         }
     }
     
 
     public func to (db:Firestore, ps:PlannerSlot) {
         
-        writesRemaining += 1
+        opsRemaining += 1
         
         let docId = Date.getDateKey(from: ps.start)
             
@@ -38,12 +38,12 @@ class PlannerSlotSerialiser {
                     "roomName":ps.roomName,
                     "subject": ps.subject,
                     "unit": ps.unit,
-                    "title": ps.title,
+                    "lesson": ps.lesson,
                     "learningObjectives" : [],
                     "resources": []
                     
                 ]){ err in
-                    self.writesRemaining -= 1
+                    self.opsRemaining -= 1
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {

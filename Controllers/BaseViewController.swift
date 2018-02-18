@@ -11,9 +11,6 @@ import FirebaseFirestore
 
 class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate {
     
-    
-    
-    
 
     var plannerDay : PlannerDay = PlannerDay()
     

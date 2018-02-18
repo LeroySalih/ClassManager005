@@ -12,12 +12,17 @@
 		4902384B202A2FA2002DEE70 /* PlannerSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902384A202A2FA2002DEE70 /* PlannerSlotView.swift */; };
 		4902384D202AE76E002DEE70 /* PlannerPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902384C202AE76E002DEE70 /* PlannerPageView.swift */; };
 		49023850202AEE32002DEE70 /* PlannerSlotDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902384F202AEE32002DEE70 /* PlannerSlotDelegate.swift */; };
+		490510B72038976D00D48F1B /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490510B62038976D00D48F1B /* UIFont.swift */; };
+		490510B920389A8B00D48F1B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490510B820389A8B00D48F1B /* UIColor.swift */; };
 		490975F0202A0DEB00DDA5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490975EF202A0DEB00DDA5B2 /* AppDelegate.swift */; };
 		490975F2202A0DEB00DDA5B2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490975F1202A0DEB00DDA5B2 /* BaseViewController.swift */; };
 		490975F5202A0DEB00DDA5B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490975F3202A0DEB00DDA5B2 /* Main.storyboard */; };
 		490975F7202A0DEB00DDA5B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490975F6202A0DEB00DDA5B2 /* Assets.xcassets */; };
 		490975FA202A0DEB00DDA5B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490975F8202A0DEB00DDA5B2 /* LaunchScreen.storyboard */; };
 		4917B4A8203047950048F1A3 /* PlannerSlotDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */; };
+		496A0424203889A600A3E007 /* build.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A04232038898B00A3E007 /* build.ttf */; };
+		496A042520388A2800A3E007 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 490975FB202A0DEB00DDA5B2 /* Info.plist */; };
+		496A042720388BF300A3E007 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A042620388BF200A3E007 /* Roboto-Light.ttf */; };
 		49938994203800E30011C512 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938993203800E30011C512 /* UIViewController.swift */; };
 		49938996203804E90011C512 /* SerialiserProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938995203804E90011C512 /* SerialiserProgressDelegate.swift */; };
 		4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45920334735005B34D5 /* UILabelVA.swift */; };
@@ -47,6 +52,8 @@
 		4902384A202A2FA2002DEE70 /* PlannerSlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotView.swift; sourceTree = "<group>"; };
 		4902384C202AE76E002DEE70 /* PlannerPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageView.swift; sourceTree = "<group>"; };
 		4902384F202AEE32002DEE70 /* PlannerSlotDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotDelegate.swift; sourceTree = "<group>"; };
+		490510B62038976D00D48F1B /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		490510B820389A8B00D48F1B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		490975EC202A0DEB00DDA5B2 /* ClassManager005.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassManager005.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		490975EF202A0DEB00DDA5B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		490975F1202A0DEB00DDA5B2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +62,8 @@
 		490975F9202A0DEB00DDA5B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		490975FB202A0DEB00DDA5B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotDetailHeaderView.swift; sourceTree = "<group>"; };
+		496A04232038898B00A3E007 /* build.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = build.ttf; sourceTree = "<group>"; };
+		496A042620388BF200A3E007 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		49938993203800E30011C512 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		49938995203804E90011C512 /* SerialiserProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialiserProgressDelegate.swift; sourceTree = "<group>"; };
 		4999E45920334735005B34D5 /* UILabelVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelVA.swift; sourceTree = "<group>"; };
@@ -159,6 +168,8 @@
 		490975EE202A0DEB00DDA5B2 /* ClassManager005 */ = {
 			isa = PBXGroup;
 			children = (
+				496A04232038898B00A3E007 /* build.ttf */,
+				496A042620388BF200A3E007 /* Roboto-Light.ttf */,
 				490975EF202A0DEB00DDA5B2 /* AppDelegate.swift */,
 				490975F3202A0DEB00DDA5B2 /* Main.storyboard */,
 				490975F6202A0DEB00DDA5B2 /* Assets.xcassets */,
@@ -202,6 +213,8 @@
 				49EDD11520359BE1004E0434 /* UILabel.swift */,
 				49FC37382036CB83003FE0B9 /* Date.swift */,
 				49938993203800E30011C512 /* UIViewController.swift */,
+				490510B62038976D00D48F1B /* UIFont.swift */,
+				490510B820389A8B00D48F1B /* UIColor.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -287,8 +300,11 @@
 			files = (
 				490975FA202A0DEB00DDA5B2 /* LaunchScreen.storyboard in Resources */,
 				49FC37372035C941003FE0B9 /* GoogleService-Info.plist in Resources */,
+				496A042520388A2800A3E007 /* Info.plist in Resources */,
 				490975F7202A0DEB00DDA5B2 /* Assets.xcassets in Resources */,
+				496A042720388BF300A3E007 /* Roboto-Light.ttf in Resources */,
 				490975F5202A0DEB00DDA5B2 /* Main.storyboard in Resources */,
+				496A0424203889A600A3E007 /* build.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +389,7 @@
 				499A86E52034BD3500FDB99B /* PlannerPageVC.swift in Sources */,
 				49023848202A1F4B002DEE70 /* PlannerSlot.swift in Sources */,
 				499A86D420349BAF00FDB99B /* PlannerDay.swift in Sources */,
+				490510B920389A8B00D48F1B /* UIColor.swift in Sources */,
 				499A86E720354D6700FDB99B /* SideMenuDelegate.swift in Sources */,
 				4902384B202A2FA2002DEE70 /* PlannerSlotView.swift in Sources */,
 				490975F2202A0DEB00DDA5B2 /* BaseViewController.swift in Sources */,
@@ -393,6 +410,7 @@
 				49938994203800E30011C512 /* UIViewController.swift in Sources */,
 				499A86DC20349C7F00FDB99B /* Periods.swift in Sources */,
 				499A86E32034BAF900FDB99B /* SideMenuVC.swift in Sources */,
+				490510B72038976D00D48F1B /* UIFont.swift in Sources */,
 				499A86DF20349D2400FDB99B /* ReceivePlannerSlots.swift in Sources */,
 				499A86D820349BFF00FDB99B /* Resource.swift in Sources */,
 				499A86E12034B43E00FDB99B /* MenuBarVC.swift in Sources */,

@@ -1,26 +1,41 @@
-//
-//  PlannerSlotDetailView.swift
-//  ClassManager005
-//
-//  Created by Leroy Salih on 07/02/2018.
-//  Copyright © 2018 Leroy Salih. All rights reserved.
-//
-
-import Foundation
+//: A UIKit based Playground for presenting user interface
+  
 import UIKit
+import PlaygroundSupport
 
 
-class PlannerPageView : UIView
-{
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
     
-    /////////////////////////////////////
-    // UI Components
-    /////////////////////////////////////
+    static func appColor() -> UIColor { return UIColor(red: 231, green: 231, blue: 231)}
+    static func borderColor() -> UIColor { return UIColor(red: 75, green: 75, blue: 75)}
+    static func pageBackground() -> UIColor { return UIColor(red: 247, green: 247, blue: 247)}
+    
+}
+
+extension UIFont {
+    static func RegisterFonts ()  {
+        
+        let cfURL = Bundle.main.url(forResource: "Roboto-Light", withExtension: "ttf")! as CFURL
+        CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+        
+    }
+}
+
+
+
+class PlannerPageVC : UIViewController {
     
     var classLabel:UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         return label
     }()
     
@@ -60,34 +75,9 @@ class PlannerPageView : UIView
         return view
     }()
     
-    func updateUI(){
-        
-        guard let ps = plannerSlot else { return }
-        classLabel.text = ps.className
-        classLabel.sizeToFit()
-        classLabel.font = UIFont(name: "Roboto-Light", size:  36.0)
-        
-        roomLabel.text = ps.roomName
-        roomLabel.sizeToFit()
-        roomLabel.textAlignment = .center
-        roomLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
-        roomLabel.textColor = UIColor.gray
-        
-        subjectLabel.text = ps.subject
-        subjectLabel.sizeToFit()
-        
-        unitLabel.text = ps.unit
-        unitLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
-        
-        lessonLabel.text = ps.lesson
-        lessonLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
-        
-    }
-    
-    func buildUI(){
+    override func loadView() {
         
         let backgroundVW:UIView = UIView()
-        backgroundVW.translatesAutoresizingMaskIntoConstraints = false 
         backgroundVW.backgroundColor = UIColor.appColor()
         
         let pageView:UIView = UIView()
@@ -116,15 +106,33 @@ class PlannerPageView : UIView
             pageInner.addSubview(view)
         }
         
-        addSubview(backgroundVW)
+        
+        pageInner.addSubview(classLabel)
+        pageInner.addSubview(roomLabel)
+        
+        UIFont.RegisterFonts()
+        
+        classLabel.text = "10C"
+        classLabel.font = UIFont(name: "Roboto-Light", size:  36.0)
+        classLabel.sizeToFit()
+        
+        roomLabel.text = "r110"
+        roomLabel.textAlignment = .center
+        roomLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
+        
+        subjectLabel.text = "Maths"
+        
+        roomLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
+        roomLabel.textColor = UIColor.gray
+        
+        unitLabel.text = "Number 4"
+        unitLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
+        
+        lessonLabel.text = "Multiplying Decimals"
+        lessonLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
+        
         
         NSLayoutConstraint.activate([
-            
-            backgroundVW.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            backgroundVW.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            backgroundVW.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            backgroundVW.bottomAnchor.constraint(equalTo:safeAreaLayoutGuide.bottomAnchor),
-            
             pageView.topAnchor.constraint(equalTo: backgroundVW.topAnchor, constant: 10),
             pageView.leadingAnchor.constraint(equalTo: backgroundVW.leadingAnchor, constant: 10),
             pageView.trailingAnchor.constraint(equalTo: backgroundVW.trailingAnchor, constant: -10),
@@ -144,9 +152,11 @@ class PlannerPageView : UIView
             
             subjectLabel.topAnchor.constraint(equalTo:classLabel.topAnchor),
             subjectLabel.leadingAnchor.constraint(equalTo: classLabel.trailingAnchor, constant: 10),
+        //    subjectLabel.trailingAnchor.constraint(equalTo: pageInner.trailingAnchor, constant: -10),
             
             unitLabel.topAnchor.constraint(equalTo:subjectLabel.bottomAnchor, constant: 5),
             unitLabel.leadingAnchor.constraint(equalTo: classLabel.trailingAnchor, constant: 10),
+        //    unitLabel.trailingAnchor.constraint(equalTo: pageInner.trailingAnchor, constant: -10),
             
             lessonLabel.topAnchor.constraint(equalTo:unitLabel.bottomAnchor, constant: 5),
             lessonLabel.leadingAnchor.constraint(equalTo: classLabel.trailingAnchor, constant: 10),
@@ -156,44 +166,12 @@ class PlannerPageView : UIView
             headingBorderView.trailingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             headingBorderView.heightAnchor.constraint(equalToConstant: 5)
             
+            
             ])
-        
-        
+        self.view = backgroundVW
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        
-    }
-    
-    convenience init() {
-        self.init(frame: CGRect.zero)
-        
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
-    }
-    
-    public var plannerSlot: PlannerSlot! {
-        didSet {
-            // remove the sub views
-            subviews.forEach({$0.removeFromSuperview()})
-            
-            // update the text labels
-            updateUI()
-            
-            // construct and present the UI
-            buildUI()
-        }
-    }
-    
-    convenience init(_ plannerSlot:PlannerSlot)
-    {
-        self.init(frame: CGRect.zero)
-        self.plannerSlot = plannerSlot
-    }
     
 }
-
+// Present the view controller in the Live View window
+PlaygroundPage.current.liveView = PlannerPageVC()
