@@ -16,6 +16,8 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
     
     public var plannerSlotDelegate: PlannerSlotDelegate?
     
+    public var currentlySelected:Int = 0
+    
     public var plannerSlots: [PlannerSlot] = [] {
         didSet {
             print("[PlannerSlotsVC] Planner Slots Received, rebuilding UI")
@@ -37,11 +39,14 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
         
         let stackView = createStackView()
         
-        for plannerSlot in plannerSlots {
-            let plannerCellView = PlannerSlotView(plannerSlot)
+        for (index, plannerSlot) in plannerSlots.enumerated() {
+            let plannerCellView = PlannerSlotView(plannerSlot, isSelected: (index == currentlySelected), viewId: index)
             plannerCellView.delegate = self
+            plannerCellView.tag = index
             stackView.addArrangedSubview(plannerCellView)
         }
+        
+        
         return stackView
     }
     
@@ -89,11 +94,21 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
     //
     ///////////////////////////////
     
-    func onPlannerCellClicked(_ plannerSlot: PlannerSlot?) {
+    func onPlannerCellClicked(_ plannerSlot: PlannerSlot?, sender: PlannerSlotView) {
         print("[PlannerSlotVC] Recieved onPlannerCellClicked")
         if plannerSlotDelegate != nil {
             print("[PlannerSlotVC] Sending onPlannerCellClicked")
-            plannerSlotDelegate?.onPlannerCellClicked(plannerSlot)
+            plannerSlotDelegate?.onPlannerCellClicked(plannerSlot, sender: sender)
+            
+            let currentlySelectedView = plannerSlotsStackView.arrangedSubviews[currentlySelected] as! PlannerSlotView
+            currentlySelectedView.isSelected = false
+            
+            self.currentlySelected = sender.viewId
+            
+            let newlySelectedView = plannerSlotsStackView.arrangedSubviews[self.currentlySelected] as! PlannerSlotView
+            newlySelectedView.isSelected = true
+            
+            
         }
     }
 }

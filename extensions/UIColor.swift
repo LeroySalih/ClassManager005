@@ -20,7 +20,9 @@ extension UIColor {
     static func appColor() -> UIColor { return UIColor(red: 231, green: 231, blue: 231)}
     static func borderColor() -> UIColor { return UIColor(red: 75, green: 75, blue: 75)}
     static func pageBackground() -> UIColor { return UIColor(red: 247, green: 247, blue: 247)}
+    static func slotSelectedBackground() -> UIColor {return UIColor(red: 247, green: 247, blue: 247)}
     static func slotNotSelectedBackground() -> UIColor {return UIColor(red: 216, green: 216, blue: 216)}
     static func headerBarBackground() -> UIColor {return UIColor(red: 48, green: 50, blue: 52)}
+    static func borderHighlightColor() -> UIColor { return UIColor.init(red: 80, green: 227, blue: 184)}
     
 }

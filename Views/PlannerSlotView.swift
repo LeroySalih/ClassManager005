@@ -13,6 +13,13 @@ import UIKit
 class PlannerSlotView : UIView
 {
     weak var delegate: PlannerSlotDelegate?
+    public var isSelected:Bool = false {
+        didSet {
+            formatBackground()
+        }
+    }
+    
+    public var viewId:Int = 0
     
     var dateFormatter:DateFormatter = DateFormatter()
     
@@ -52,6 +59,16 @@ class PlannerSlotView : UIView
         return textLabel
     }()
     
+    var highlightBar : UIView = {
+        
+        var view: UIView = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .borderHighlightColor()
+        
+        return view
+        
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         //addSubviews()
@@ -59,10 +76,13 @@ class PlannerSlotView : UIView
         
     }
     
-    convenience init(_ plannerSlot: PlannerSlot) {
+    convenience init(_ plannerSlot: PlannerSlot, isSelected: Bool, viewId:Int) {
         
         self.init(frame: CGRect.zero)
         self.plannerSlot = plannerSlot
+        self.isSelected = isSelected
+        self.viewId = viewId
+        
         addSubviews()
         updateDisplay()
         
@@ -76,7 +96,7 @@ class PlannerSlotView : UIView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let dateFormatter:DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-        delegate?.onPlannerCellClicked(plannerSlot!)
+        delegate?.onPlannerCellClicked(plannerSlot!, sender: self)
         //print ("Touched \(dateFormatter.string(from: plannerSlot!.start))")
     }
     
@@ -91,15 +111,28 @@ class PlannerSlotView : UIView
         
     }
     
+    
+    func formatBackground(){
+        if (self.isSelected){
+            backgroundColor = UIColor.slotSelectedBackground()
+            highlightBar.isHidden = false
+        } else {
+            backgroundColor = UIColor.slotNotSelectedBackground()
+            highlightBar.isHidden = true
+        }
+    }
+    
     func addSubviews() {
         
-        backgroundColor = UIColor.slotNotSelectedBackground()
+        formatBackground()
+        
         layer.borderColor = UIColor.borderColor().cgColor
         layer.borderWidth = 1
         
         addSubview(plannerSlotTitleLabel)
         addSubview(classLabel)
         addSubview(roomLabel)
+        addSubview(highlightBar)
         
         NSLayoutConstraint.activate([
             
@@ -118,6 +151,11 @@ class PlannerSlotView : UIView
             roomLabel.widthAnchor.constraint(equalToConstant: 50),
       //      roomLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             roomLabel.heightAnchor.constraint(equalToConstant:22),
+            
+            highlightBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            highlightBar.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            highlightBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            highlightBar.widthAnchor.constraint(equalToConstant: 10)
             
 
             ])

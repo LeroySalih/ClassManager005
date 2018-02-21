@@ -214,7 +214,7 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     //  SideMenuDelegate Functions
     //
     ///////////////////////////////
-    func onPlannerCellClicked(_ plannerSlot: PlannerSlot?) {
+    func onPlannerCellClicked(_ plannerSlot: PlannerSlot?, sender: PlannerSlotView) {
         print("[BaseViewController] Received Planner Slot Clicked")
         plannerPageVC.plannerSlot = plannerSlot
     //    displayPageView.plannerSlot = plannerSlot
