@@ -10,5 +10,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "BaseViewController.viewDidLoad():BaseViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in BaseViewController.loadPlannerDays():BaseViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot!.documents.data()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

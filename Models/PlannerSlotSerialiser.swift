@@ -21,28 +21,43 @@ class PlannerSlotSerialiser {
     }
     
 
-    public func to (db:Firestore, ps:PlannerSlot) {
+    public func save (db:Firestore, ps:PlannerSlot) {
         
         opsRemaining += 1
         
-        let docId = Date.getDateKey(from: ps.start)
-            
+        var docRef:DocumentReference? = nil
+        
+        docRef = db.collection("PSlots").addDocument(data: ps.dictionary, completion: { (error) in
+            if let error = error {
+                print ("Error \(error)")
+            } else {
+                
+                self.opsRemaining -= 1
+                
+                print ("updating PlannedDates collection")
+                let plannerDate = Date.getDateKey(from: ps.start)
+                
+                var plannerDay:PlannerDay = PlannerDay(date: ps.start)
+                
+                db.collection("PlannerDays")
+                    .document(plannerDay.label)
+                    .setData(plannerDay.dictionary, completion: { (err) in
+                        if let error = error  {
+                            print ("Error \(error)")
+                        } else {
+                            print ("plannerDates updated")
+                        }
+                    })
+                }
+                
+            })
+        
+        /*
             db.collection("PSlots")
                 .document(docId)
                 .collection("Slots")
                 .document(ps.title)
-                .setData([
-                    "startTime": ps.start,
-                    "endTime": ps.end,
-                    "className": ps.className,
-                    "roomName":ps.roomName,
-                    "subject": ps.subject,
-                    "unit": ps.unit,
-                    "lesson": ps.lesson,
-                    "learningObjectives" : [],
-                    "resources": []
-                    
-                ]){ err in
+                .setData(ps.dictionary){ err in
                     self.opsRemaining -= 1
                     if let err = err {
                         print("Error writing document: \(err)")
@@ -50,6 +65,7 @@ class PlannerSlotSerialiser {
                         print("\(ps.start) Document successfully written!")
                     }
             }
+         */
         
     }
     

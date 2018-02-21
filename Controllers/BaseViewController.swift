@@ -11,7 +11,11 @@ import FirebaseFirestore
 
 class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate {
     
+    var db:Firestore!
 
+    var plannerDays:[PlannerDay] = []
+    var plannerSlots:[PlannerSlot] = []
+    
     var plannerDay : PlannerDay = PlannerDay()
     
     let SPACER:CGFloat = 10.0
@@ -47,27 +51,50 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         return PlannerPageVC()
     }()
 
-    func loadDocIds ()  {
+    func loadPlannerDays(){
+        db.collection("PlannerDays").getDocuments { (snapshot, error) in
+            if let error = error {
+                print ("[BaseViewController]::LoadDays Error: \(error)")
+                return
+            }
+            var plannerDays:[PlannerDay] = (snapshot?.documents.flatMap({ (document) -> PlannerDay? in
+                return PlannerDay(dictionary: document.data())
+            }))!
+            
+            //print (plannerDays)
+            
+            self.plannerDays = snapshot!.documents.flatMap({PlannerDay(dictionary: $0.data())})
+            self.sideMenuBarVC.plannerDays = self.plannerDays
+            if self.plannerDays.count > 0 {
+                self.loadPlannerSlots(plannerDay:plannerDays[0])
+            }
+            
+        }
+    }
+    
+    func loadPlannerSlots (plannerDay:PlannerDay){
         
-        let db = Firestore.firestore()
-        db.collection("/PSlots")
+        db.collection("PSlots")
+            .whereField("start", isGreaterThanOrEqualTo: plannerDay.date.startOfDay()!)
+            .whereField("start", isLessThanOrEqualTo: plannerDay.date.endOfDay()!)
+            .order(by: "start")
             .getDocuments(){ (snapshot, error) in
                 
                 if error != nil {
                     print (error!)
-                    
                 } else {
+                    print ("[BaseViewController]::loadPlannerSlots. Found \(snapshot?.documents.count) Planner Slots")
                     
-                    var docIds:[String] = []
+                    self.plannerSlots = (snapshot?.documents.flatMap({ (document) -> PlannerSlot? in
+                        return PlannerSlot(dictionary: document.data())
+                    }))!
                     
-                    for doc in (snapshot?.documents)!{
-                        docIds.append(doc.documentID)
-                    }
-                    self.sideMenuBarVC.pickableDates = docIds
+                    self.plannerSlotsVC.plannerSlots = self.plannerSlots
+                    
                 }
         }
-        
     }
+    
     
     
     func addSubviewController(vc:UIViewController){
@@ -80,11 +107,17 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // intialise the connection to Firestore.
+        db = Firestore.firestore()
+        
         view.backgroundColor = UIColor.appColor()
         
         addSubviewController(vc: menuBarVC)
         addSubviewController(vc: sideMenuBarVC)
-        loadDocIds()
+ 
+        
+        loadPlannerDays()
+        
         sideMenuBarVC.sideMenuEventsDelegate = self
         
         addSubviewController(vc: plannerSlotsVC)
@@ -135,39 +168,22 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         print("[BaseViewController]: OnInitButton Clicked")
         
         // Initialise View Controller
-        plannerSlotsVC.plannerSlots = plannerDay.slots
+        plannerSlotsVC.plannerSlots = plannerSlots
         
     }
     
     func onGetDataClicked(){
         print("[BaseViewController]: onGetDataButton Clicked")
-        loadPlannerSlots(docId: "2018-01-01")
+    //    loadPlannerSlots(docId: "2018-01-01")
         
     }
     
-    func onDateChanged(docId:String){
-        loadPlannerSlots(docId: docId)
+    func onDateChanged(plannerDay:PlannerDay){
+        print ("[BaseViewController]::onDataChanged \(plannerDay.label) has been selected")
+        loadPlannerSlots(plannerDay: plannerDay)
     }
     
-    func loadPlannerSlots (docId:String){
-        
-        let db = Firestore.firestore()
-        db.collection("PSlots")
-            .document(docId)
-            .collection("Slots")
-            .order(by: "startTime")
-            .getDocuments(){ (snapshot, error) in
-                
-                if error != nil {
-                    print (error!)
-                } else {
-                    
-                    let plannerDay:PlannerDay = PlannerDay.create(forDate:Date(), from: snapshot!)
-                    self.plannerSlotsVC.plannerSlots = plannerDay.slots
-                    
-                }
-        }
-    }
+    
     
     
     func addWeeklyTimetable (firstSunday:Date){
@@ -189,7 +205,7 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         
         // Serialise Each Planner
         plannerSlots.forEach { (ps) in
-            psSerialise.to(db:fs, ps: ps)
+            psSerialise.save(db:fs, ps: ps)
         }
         
         //

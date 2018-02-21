@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
 
 
 struct PlannerSlot {
@@ -28,22 +28,57 @@ struct PlannerSlot {
     
     //public var lesson:Lesson
     
-    
-    
-    init (start:Date, end:Date, title:String, className:String, roomName:String, subject:String, unit:String, lesson:String,
-          learningObjectives:[String], resources:[String]){
-        self.start = start
-        self.end = end
-        self.title = title
-        self.className = className
-        self.roomName = roomName
-        self.subject = subject
-        self.unit = unit
-        self.lesson = lesson
-        self.learningObjectives = learningObjectives
-        self.resources = resources
+    var dictionary:[String:Any] {
+        return [
+            "start":start,
+            "end":end,
+            "title":title,
+            "className":className,
+            "roomName":roomName,
+            "subject":subject,
+            "unit":unit,
+            "lesson":lesson,
+            "learningObjectives": learningObjectives,
+            "resources" : resources
+        ]
     }
+
     
 }
 
+
+extension PlannerSlot : DocumentSerializable {
+    
+    init?(dictionary: [String : Any]){
+        guard let start = dictionary["start"] as? Date,
+              let end = dictionary["end"] as? Date,
+              let title = dictionary["title"] as? String,
+              let className = dictionary["className"] as? String,
+              let roomName = dictionary["roomName"] as? String,
+              let subject = dictionary["subject"] as? String,
+              let unit = dictionary["unit"] as? String,
+              let lesson = dictionary["lesson"] as? String,
+              let learningObjectives = dictionary["learningObjectives"] as? [String],
+              let resources = dictionary["resources"] as? [String]
+    
+        else{
+            return nil
+                }
+        
+        self.init(  start: start,
+                    end: end,
+                    title: title,
+                    className:
+                    className,
+                    roomName: roomName,
+                    subject: subject,
+                    unit: unit,
+                    lesson: lesson,
+                    learningObjectives:learningObjectives,
+                    resources: resources)
+        
+    }
+        
+    
+}
 

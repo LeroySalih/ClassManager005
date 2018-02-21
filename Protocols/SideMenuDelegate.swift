@@ -14,5 +14,5 @@ protocol SideMenuDelegate {
     func onGetDataClicked()
     func onAddDataClicked()
     
-    func onDateChanged(docId:String)
+    func onDateChanged(plannerDay:PlannerDay)
 }

@@ -23,7 +23,13 @@ class SideMenuVC : UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         }
     }
     
-    
+    public var plannerDays:[PlannerDay] = [] {
+        didSet {
+            self.pickableDates = plannerDays.flatMap({ (plannerDay) -> String in
+                return plannerDay.label
+            })
+        }
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -41,7 +47,7 @@ class SideMenuVC : UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         print("[SideMenuVC]: Date Changed")
         if sideMenuEventsDelegate != nil {
             print("[SideMenuVC]: calling parent Init Clicked")
-            sideMenuEventsDelegate?.onDateChanged(docId: pickableDates[row])
+            sideMenuEventsDelegate?.onDateChanged(plannerDay: plannerDays[row])
         } else {
             print("[SideMenuVC]: No Delegate Found for onDateChanged Event")
         }
