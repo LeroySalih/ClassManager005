@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controllers/BaseViewController.swift"
-            timestampString = "540932208.191539"
+            timestampString = "540957381.70236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "sideMenuBarVC"
             landmarkType = "24">
          </BreakpointContent>

@@ -13,7 +13,9 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     
     var db:Firestore!
 
-    var plannerDays:[PlannerDay] = []
+    // Data Is in Dictionary instead of array to support change events from Firestore
+    var plannerDays:[Date:PlannerDay] = [:]
+    
     var plannerSlots:[PlannerSlot] = []
     
     var plannerDay : PlannerDay = PlannerDay()
@@ -63,12 +65,44 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
             
             //print (plannerDays)
             
-            self.plannerDays = snapshot!.documents.flatMap({PlannerDay(dictionary: $0.data())})
-            self.sideMenuBarVC.plannerDays = self.plannerDays
+            
+            self.plannerDays = [:]
+            snapshot!.documents
+                    .flatMap({PlannerDay(dictionary: $0.data())})
+                    .forEach({ (plannerDay) -> Void in
+                        self.plannerDays[plannerDay.date] = plannerDay
+                            })
+            
+            self.sideMenuBarVC.plannerDays = Array(self.plannerDays.values)
             if self.plannerDays.count > 0 {
                 self.loadPlannerSlots(plannerDay:plannerDays[0])
             }
             
+        }
+    }
+    
+    func checkForUpdatesPlannerDays(){
+        db.collection("PlannerDays").addSnapshotListener { (snapshot, error) in
+            guard let snapshot = snapshot else {return}
+            
+            snapshot.documentChanges.forEach({ (diff) in
+                if diff.type == .added {
+                    let plannerDay = PlannerDay(dictionary: diff.document.data())
+                    
+                    print ("Adding \(plannerDay?.label)")
+                    
+                    self.plannerDays[(plannerDay?.date)!] = plannerDay
+                }
+                if diff.type == .removed {
+                    let plannerDay = PlannerDay(dictionary: diff.document.data())
+                    
+                    print ("Removing \(plannerDay?.label)")
+                    
+                    self.plannerDays[(plannerDay?.date)!] = nil
+                }
+            })
+            
+            self.sideMenuBarVC.plannerDays = Array(self.plannerDays.values)
         }
     }
     
@@ -116,7 +150,8 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         addSubviewController(vc: sideMenuBarVC)
  
         
-        loadPlannerDays()
+        //loadPlannerDays()
+        checkForUpdatesPlannerDays()
         
         sideMenuBarVC.sideMenuEventsDelegate = self
         
