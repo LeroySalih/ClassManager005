@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class PlannerSlotDetailHeaderView : UIView {
+class PlannerPageHeader : UIView {
     
     /////////////////////////////////////////////////////////////////////////////////
     //

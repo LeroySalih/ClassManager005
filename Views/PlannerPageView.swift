@@ -60,6 +60,29 @@ class PlannerPageView : UIView
         return view
     }()
     
+    var learningObjectivesView:TextListView = {
+        
+        var view:TextListView = TextListView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view;
+        
+    }()
+    
+    var resourcesView: TextListView = {
+        var view:TextListView = TextListView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var pageStackView:UIStackView = {
+        var stackView = UIStackView()
+        
+        stackView.axis = .vertical
+        
+        return stackView
+    }()
+    
     func updateUI(){
         
         guard let ps = plannerSlot else { return }
@@ -81,6 +104,9 @@ class PlannerPageView : UIView
         
         lessonLabel.text = ps.lesson
         lessonLabel.font = UIFont(name: "Roboto-Light", size:  14.0)
+        
+        learningObjectivesView.learningObjectives = ps.learningObjectives
+        resourcesView.learningObjectives = ps.resources
         
     }
     
@@ -112,10 +138,11 @@ class PlannerPageView : UIView
         backgroundVW.addSubview(pageView)
         backgroundVW.addSubview(pageInner)
         
-        [classLabel, roomLabel, subjectLabel, unitLabel, lessonLabel, headingBorderView].forEach { (view) in
+        
+        [classLabel, roomLabel, subjectLabel, unitLabel, lessonLabel, headingBorderView, learningObjectivesView, resourcesView].forEach { (view) in
             pageInner.addSubview(view)
         }
-        
+
         addSubview(backgroundVW)
         
         NSLayoutConstraint.activate([
@@ -154,7 +181,16 @@ class PlannerPageView : UIView
             headingBorderView.topAnchor.constraint(equalTo: lessonLabel.bottomAnchor, constant: 10),
             headingBorderView.leadingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             headingBorderView.trailingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            headingBorderView.heightAnchor.constraint(equalToConstant: 5)
+            headingBorderView.heightAnchor.constraint(equalToConstant: 5),
+            
+            learningObjectivesView.topAnchor.constraint(equalTo: headingBorderView.bottomAnchor, constant: 10),
+            learningObjectivesView.leadingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            learningObjectivesView.trailingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            learningObjectivesView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
+            
+            resourcesView.topAnchor.constraint(equalTo: learningObjectivesView.bottomAnchor, constant: learningObjectivesView.frame.height),
+            resourcesView.leadingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            resourcesView.trailingAnchor.constraint(equalTo: pageInner.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
             ])
         

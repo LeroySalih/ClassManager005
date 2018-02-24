@@ -3,211 +3,178 @@
 import UIKit
 import PlaygroundSupport
 
-extension UILabel {
-    func headingFont() -> UIFont? {return UIFont(name:"Avenir", size: 36)}
-    func subHeadingFont() -> UIFont? {return UIFont(name:"Avenir", size: 20)}
-}
-
-class PlannerPageView : UIView
-{
+// This View Controller will display the list of items....
+class TextListViewController : UIViewController {
     
-    var learningObjectives:[String] = ["Learing Objective 1", "Learing Objective 2",]
-    var resources:[String] = ["Resource 1", "Resource 2",]
-
-    var classLabel:UILabel = {
+    var list:[String] = [] {
+        didSet {
+            buildStackView()
+        }
+    }
+    var label:String = "" {
+        didSet {
+            listTitleLabel.text = label
+            listTitleLabel.sizeToFit()
+        }
+    }
+    
+    var listTitleLabel:UILabel = {
+        
         var label:UILabel = UILabel()
+        
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.headingFont()
-        label.textAlignment = .center
+        
         return label
-    }()
-
-    var roomLabel:UILabel = {
-        var label:UILabel = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.subHeadingFont()
-        label.textAlignment = .center
-
-        return label
+        
     }()
     
-    var lessonLabel:UILabel = {
-        var label:UILabel = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.subHeadingFont()
-    //    label.textAlignment = .center
+    // Will hold each list item
+    var textListStackView : UIStackView = {
+    
+        var stackView:UIStackView = UIStackView()
+        // Use Constraints to layout the view
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        stackView.backgroundColor = .blue
         
-        return label
+        return stackView
     }()
     
-    var unitLabel:UILabel = {
-        var label:UILabel = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.subHeadingFont()
-    //    label.textAlignment = .center
+    func buildStackView(){
+        textListStackView.subviews.forEach { (subView) in
+            subView.removeFromSuperview()
+        }
         
-        return label
-    }()
-    
-    var subjectLabel:UILabel = {
-        var label:UILabel = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.subHeadingFont()
-     //   label.textAlignment = .center
+        textListStackView.addArrangedSubview(listTitleLabel)
         
-        return label
-    }()
-    
-    var loLabel:UILabel = {
-        var label:UILabel = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.subHeadingFont()
-        //   label.textAlignment = .center
-        
-        return label
-    }()
-    
-    var resourcesLabel:UILabel = {
-        var label:UILabel = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.subHeadingFont()
-        //   label.textAlignment = .center
-        
-        return label
-    }()
-
-    func updateUI(){
-        classLabel.text = "10C"
-        classLabel.sizeToFit()
-
-        roomLabel.text = "PC105"
-        roomLabel.sizeToFit()
-        
-        lessonLabel.text = "Multiplying Decimal Numbers"
-        lessonLabel.sizeToFit()
-        
-        unitLabel.text = "Numbers"
-        unitLabel.sizeToFit()
-        
-        subjectLabel.text = "Math"
-        unitLabel.sizeToFit()
-        
-        loLabel.text = "Learning Objectives"
-        loLabel.sizeToFit()
-        
-        resourcesLabel.text = "Resources"
-        resourcesLabel.sizeToFit()
+        // Add each item
+        list.forEach { (item) in
+            let label:UILabel = UILabel()
+            label.text = item
+            label.sizeToFit()
+            textListStackView.addArrangedSubview(label)
+        }
         
     }
-
-    func buildUI(){
+    //
+    override func loadView() {
+        print ("[TextListViewController]::loadView Called")
+        
+        let view:UIView = UIView()
+        
+        // Use Constraints to layout the view
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        buildStackView()
+        
+        //
+        view.addSubview(textListStackView)
+        
+        self.view = view
+        
+    }
     
-        let classStackView = UIStackView()
-        classStackView.translatesAutoresizingMaskIntoConstraints = false
-        classStackView.axis = .vertical
-        classStackView.addArrangedSubview(classLabel)
-        classStackView.addArrangedSubview(roomLabel)
+    override func viewDidLoad() {
+        print ("[TextListViewController]::viewDidload Called")
         
-        addSubview (classStackView)
-        
-        let lessonStackView = UIStackView()
-        lessonStackView.translatesAutoresizingMaskIntoConstraints = false
-        lessonStackView.axis = .vertical
-        lessonStackView.addArrangedSubview(lessonLabel)
-        lessonStackView.addArrangedSubview(unitLabel)
-        lessonStackView.addArrangedSubview(subjectLabel)
-        
-        addSubview(lessonStackView)
-        
-        let loStackView:UIStackView = UIStackView()
-        loStackView.translatesAutoresizingMaskIntoConstraints = false
-        loStackView.axis = .vertical
-        
-    
-        addSubview(loLabel)
-        learningObjectives.forEach({
-            
-            let label:UILabel = UILabel()
-            label.text = $0
-            label.sizeToFit()
-            loStackView.addArrangedSubview(label)
-        })
-        
-        addSubview(loStackView)
-        
-        addSubview(resourcesLabel)
-        
-        let resourcesStackView:UIStackView = UIStackView()
-        resourcesStackView.translatesAutoresizingMaskIntoConstraints = false
-        resourcesStackView.axis = .vertical
-        
-        
-        resources.forEach({
-            let label:UILabel = UILabel()
-            label.text = $0
-            label.sizeToFit()
-            resourcesStackView.addArrangedSubview(label)
-        })
-        
-        addSubview(resourcesStackView)
+        view.backgroundColor = .red
         
         NSLayoutConstraint.activate([
-            classStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-        //    classStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            classStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-         //   classStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            lessonStackView.topAnchor.constraint(equalTo:safeAreaLayoutGuide.topAnchor),
-            lessonStackView.leadingAnchor.constraint(equalTo: classStackView.trailingAnchor, constant:10),
             
-            loLabel.topAnchor.constraint(equalTo: classStackView.bottomAnchor, constant: 10),
-            loLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            loStackView.topAnchor.constraint(equalTo:loLabel.bottomAnchor),
-        loStackView.leadingAnchor.constraint(equalTo:safeAreaLayoutGuide.leadingAnchor),
-        loStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            
-            resourcesLabel.topAnchor.constraint(equalTo: loStackView.bottomAnchor, constant: 10),
-            resourcesLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            
-            resourcesStackView.topAnchor.constraint(equalTo: resourcesLabel.bottomAnchor, constant: 10),
-            
-            resourcesStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            
+            textListStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            textListStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            textListStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            textListStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+ 
         ])
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         
-        backgroundColor = .green
-        updateUI()
-        buildUI()
-    }
-    
-    convenience init() {
-        self.init(frame: CGRect.zero)
-        backgroundColor = .green
-        updateUI()
-        buildUI()
-    }
-    
-     required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
     }
     
 }
 
 class MyViewController : UIViewController {
+    
+    var pageStackView:UIStackView = {
+        let stackView:UIStackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        
+        return stackView
+        
+    }()
+    
+    var label:UILabel = {
+        
+        var label :UILabel = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Thats all folks"
+    
+        label.sizeToFit()
+        return label
+        
+    }()
+    
+    
+    @objc func onAdditemClicked(){
+        var list = self.lessonObjectivesListViewController.list
+        list.append("New Item")
+        self.lessonObjectivesListViewController.list = list
+    }
+    
+    var button:UIButton = {var button:UIButton = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(onAdditemClicked), for: .touchUpInside)
+        return button
+        
+        }()
+    
+    var resourcesListViewController : TextListViewController = {
+        let textListViewController:TextListViewController = TextListViewController()
+        textListViewController.label = "Resources"
+        textListViewController.list = ["Item 1", "Item 2", "Item 3"]
+        return textListViewController
+    }()
+    
+    var lessonObjectivesListViewController : TextListViewController = {
+        let textListViewController:TextListViewController = TextListViewController()
+        textListViewController.label = "Learning Objectives"
+        textListViewController.list = ["Item 1", "Item 2", "Item 3"]
+        return textListViewController
+    }()
+    
     override func loadView() {
         let view = UIView()
+        
+        resourcesListViewController.didMove(toParentViewController: self)
+        lessonObjectivesListViewController.didMove(toParentViewController: self)
+        
+        view.addSubview(pageStackView)
+        
         view.backgroundColor = .white
-
-        let page = PlannerPageView(frame: CGRect(x: 10, y: 10, width: 400, height: 400))
-        
-        view.addSubview(page)
-        
         self.view = view
     }
+    
+    override func viewDidLoad() {
+        
+        pageStackView.addArrangedSubview(lessonObjectivesListViewController.view)
+        pageStackView.addArrangedSubview(resourcesListViewController.view)
+    
+        pageStackView.addArrangedSubview(label)
+        pageStackView.addArrangedSubview(button)
+        
+        NSLayoutConstraint.activate([
+            pageStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            pageStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            pageStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+   //         pageStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            
+            ])
+        
+    }
 }
-
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = MyViewController()

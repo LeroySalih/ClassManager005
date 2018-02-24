@@ -20,13 +20,15 @@
 		490975F7202A0DEB00DDA5B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490975F6202A0DEB00DDA5B2 /* Assets.xcassets */; };
 		490975FA202A0DEB00DDA5B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490975F8202A0DEB00DDA5B2 /* LaunchScreen.storyboard */; };
 		490AD806203DE2D000FE3986 /* DocumentSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490AD805203DE2D000FE3986 /* DocumentSerializable.swift */; };
-		4917B4A8203047950048F1A3 /* PlannerSlotDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */; };
+		4917B4A8203047950048F1A3 /* PlannerPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917B4A7203047950048F1A3 /* PlannerPageHeader.swift */; };
 		496A0424203889A600A3E007 /* build.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A04232038898B00A3E007 /* build.ttf */; };
 		496A042720388BF300A3E007 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A042620388BF200A3E007 /* Roboto-Light.ttf */; };
+		49806CB220413E4C0067D485 /* TextListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB120413E4C0067D485 /* TextListVC.swift */; };
+		49806CB42041BCC90067D485 /* PlannerPageHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */; };
 		49938994203800E30011C512 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938993203800E30011C512 /* UIViewController.swift */; };
 		49938996203804E90011C512 /* SerialiserProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938995203804E90011C512 /* SerialiserProgressDelegate.swift */; };
 		4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45920334735005B34D5 /* UILabelVA.swift */; };
-		4999E45C20334949005B34D5 /* LearningObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45B20334949005B34D5 /* LearningObjectivesView.swift */; };
+		4999E45C20334949005B34D5 /* TextListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45B20334949005B34D5 /* TextListView.swift */; };
 		4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45D2033F5B2005B34D5 /* ResourcesView.swift */; };
 		499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86D12034952B00FDB99B /* PlannerSlotsVC.swift */; };
 		499A86D420349BAF00FDB99B /* PlannerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86D320349BAF00FDB99B /* PlannerDay.swift */; };
@@ -62,13 +64,15 @@
 		490975F9202A0DEB00DDA5B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		490975FB202A0DEB00DDA5B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		490AD805203DE2D000FE3986 /* DocumentSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSerializable.swift; sourceTree = "<group>"; };
-		4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotDetailHeaderView.swift; sourceTree = "<group>"; };
+		4917B4A7203047950048F1A3 /* PlannerPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageHeader.swift; sourceTree = "<group>"; };
 		496A04232038898B00A3E007 /* build.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = build.ttf; sourceTree = "<group>"; };
 		496A042620388BF200A3E007 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		49806CB120413E4C0067D485 /* TextListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVC.swift; sourceTree = "<group>"; };
+		49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageHeaderVC.swift; sourceTree = "<group>"; };
 		49938993203800E30011C512 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		49938995203804E90011C512 /* SerialiserProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialiserProgressDelegate.swift; sourceTree = "<group>"; };
 		4999E45920334735005B34D5 /* UILabelVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelVA.swift; sourceTree = "<group>"; };
-		4999E45B20334949005B34D5 /* LearningObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningObjectivesView.swift; sourceTree = "<group>"; };
+		4999E45B20334949005B34D5 /* TextListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListView.swift; sourceTree = "<group>"; };
 		4999E45D2033F5B2005B34D5 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		499A86D12034952B00FDB99B /* PlannerSlotsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotsVC.swift; sourceTree = "<group>"; };
 		499A86D320349BAF00FDB99B /* PlannerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDay.swift; sourceTree = "<group>"; };
@@ -122,8 +126,8 @@
 			children = (
 				4902384A202A2FA2002DEE70 /* PlannerSlotView.swift */,
 				4902384C202AE76E002DEE70 /* PlannerPageView.swift */,
-				4917B4A7203047950048F1A3 /* PlannerSlotDetailHeaderView.swift */,
-				4999E45B20334949005B34D5 /* LearningObjectivesView.swift */,
+				4917B4A7203047950048F1A3 /* PlannerPageHeader.swift */,
+				4999E45B20334949005B34D5 /* TextListView.swift */,
 				4999E45D2033F5B2005B34D5 /* ResourcesView.swift */,
 			);
 			path = Views;
@@ -189,6 +193,8 @@
 				499A86E02034B43E00FDB99B /* MenuBarVC.swift */,
 				499A86E22034BAF900FDB99B /* SideMenuVC.swift */,
 				499A86E42034BD3500FDB99B /* PlannerPageVC.swift */,
+				49806CB120413E4C0067D485 /* TextListVC.swift */,
+				49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -389,11 +395,13 @@
 				49FC37392036CB83003FE0B9 /* Date.swift in Sources */,
 				499A86E52034BD3500FDB99B /* PlannerPageVC.swift in Sources */,
 				49023848202A1F4B002DEE70 /* PlannerSlot.swift in Sources */,
+				49806CB42041BCC90067D485 /* PlannerPageHeaderVC.swift in Sources */,
 				499A86D420349BAF00FDB99B /* PlannerDay.swift in Sources */,
 				490510B920389A8B00D48F1B /* UIColor.swift in Sources */,
 				499A86E720354D6700FDB99B /* SideMenuDelegate.swift in Sources */,
 				4902384B202A2FA2002DEE70 /* PlannerSlotView.swift in Sources */,
 				490975F2202A0DEB00DDA5B2 /* BaseViewController.swift in Sources */,
+				49806CB220413E4C0067D485 /* TextListVC.swift in Sources */,
 				49FC373D2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift in Sources */,
 				4902384D202AE76E002DEE70 /* PlannerPageView.swift in Sources */,
 				4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */,
@@ -403,12 +411,12 @@
 				499A86D620349BD800FDB99B /* Lesson.swift in Sources */,
 				499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */,
 				49FC373B2036FE68003FE0B9 /* TeacherTimetable.swift in Sources */,
-				4917B4A8203047950048F1A3 /* PlannerSlotDetailHeaderView.swift in Sources */,
+				4917B4A8203047950048F1A3 /* PlannerPageHeader.swift in Sources */,
 				49023850202AEE32002DEE70 /* PlannerSlotDelegate.swift in Sources */,
 				499A86DA20349C1700FDB99B /* LearningObjective.swift in Sources */,
 				49EDD11620359BE1004E0434 /* UILabel.swift in Sources */,
 				4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */,
-				4999E45C20334949005B34D5 /* LearningObjectivesView.swift in Sources */,
+				4999E45C20334949005B34D5 /* TextListView.swift in Sources */,
 				49938994203800E30011C512 /* UIViewController.swift in Sources */,
 				499A86DC20349C7F00FDB99B /* Periods.swift in Sources */,
 				499A86E32034BAF900FDB99B /* SideMenuVC.swift in Sources */,

@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 
-class LearningObjectivesView : UIView {
+class TextListView : UIView {
     
     ///////////////////////////////
     // Component State
     ///////////////////////////////
     
-    public var learningObjectives:[LearningObjective]? {
+    public var learningObjectives:[String]? {
         didSet {
             updateDisplay()
         }
@@ -59,7 +59,7 @@ class LearningObjectivesView : UIView {
         
     }
     
-    convenience init(_ learningObjectives: [LearningObjective]) {
+    convenience init(_ learningObjectives: [String]) {
         
         self.init(frame: CGRect.zero)
         self.learningObjectives = learningObjectives
@@ -88,11 +88,11 @@ class LearningObjectivesView : UIView {
             viewHeading.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             viewHeading.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             viewHeading.heightAnchor.constraint(equalToConstant: 50),
-            /*
+            
             learningObjectivesStackView.topAnchor.constraint(equalTo: viewHeading.bottomAnchor, constant: 10),
             learningObjectivesStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             learningObjectivesStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            learningObjectivesStackView.heightAnchor.constraint(equalToConstant: 50)*/
+         //   learningObjectivesStackView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
     }
@@ -108,12 +108,20 @@ class LearningObjectivesView : UIView {
         
         // Add the new views to the Stack View
         if (self.learningObjectives?.count) != nil{
-            for lo:LearningObjective in self.learningObjectives!{
+            for lo:String in self.learningObjectives!{
+                
+                print ("Adding \(lo)")
+                
                 let newLabel:UILabel = UILabel()
                 newLabel.translatesAutoresizingMaskIntoConstraints = false
-                newLabel.text = lo.title
+                newLabel.text = lo
+                newLabel.sizeToFit()
+                
                 learningObjectivesStackView.addArrangedSubview(newLabel)
             }
+            
+            learningObjectivesStackView.setNeedsLayout()
+            learningObjectivesStackView.layoutIfNeeded()
         }
         
     }
