@@ -84,7 +84,7 @@ class TextListVC : UIViewController {
     override func viewDidLoad() {
         print ("[TextListViewController]::viewDidload Called")
         
-        view.backgroundColor = .red
+        //view.backgroundColor = .red
         
         let constraints:[NSLayoutConstraint] = [
             

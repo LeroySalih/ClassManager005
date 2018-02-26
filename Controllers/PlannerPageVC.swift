@@ -62,6 +62,18 @@ class PlannerPageVC : UIViewController
         return stackView
     }()
     
+    var headingBorderView: UIView = {
+        var view:UIView = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.init(red: 80, green: 227, blue: 184)
+        view.layer.cornerRadius = 2
+        view.layer.shadowColor = UIColor(red: 100, green: 100, blue: 100).cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 2
+        return view
+    }()
+    
     //////////////////////////////////////////
     // View Controller State
     //////////////////////////////////////////
@@ -110,8 +122,8 @@ class PlannerPageVC : UIViewController
         learningObjectivesListVC.didMove(toParentViewController: self)
         resourcesListVC.didMove(toParentViewController: self)
         
-        
         pageStackView.addArrangedSubview(plannerPageHeaderVC.view)
+        pageStackView.addArrangedSubview(headingBorderView)
         pageStackView.addArrangedSubview(learningObjectivesListVC.view)
         pageStackView.addArrangedSubview(resourcesListVC.view)
         
@@ -126,6 +138,10 @@ class PlannerPageVC : UIViewController
         print ("[Planner Page] View loaded")
         
         let constraints:[NSLayoutConstraint] = [
+           
+            headingBorderView.heightAnchor.constraint(equalToConstant: 5),
+            headingBorderView.leadingAnchor.constraint(equalTo: pageStackView.leadingAnchor),
+            headingBorderView.trailingAnchor.constraint(equalTo: pageStackView.trailingAnchor),
             pageInnerView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 20),
             pageInnerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             pageInnerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),

@@ -21,7 +21,7 @@ class PlannerPageHeaderVC : UIViewController {
         
         var label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .yellow
+        //label.backgroundColor = .yellow
         label.textColor = .black
         return label
         
@@ -31,7 +31,7 @@ class PlannerPageHeaderVC : UIViewController {
         
         var label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .yellow
+        //label.backgroundColor = .yellow
         label.textColor = .black
         return label
         
@@ -41,7 +41,7 @@ class PlannerPageHeaderVC : UIViewController {
         
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .yellow
+        //label.backgroundColor = .yellow
         label.textColor = .black
         return label
         
@@ -51,7 +51,7 @@ class PlannerPageHeaderVC : UIViewController {
         
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .yellow
+        //label.backgroundColor = .yellow
         label.textColor = .black
         return label
         
@@ -61,7 +61,7 @@ class PlannerPageHeaderVC : UIViewController {
         
         var label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .yellow
+        //label.backgroundColor = .yellow
         label.textColor = .black
         return label
         
@@ -100,6 +100,8 @@ class PlannerPageHeaderVC : UIViewController {
         
         return stackView
     }()
+    
+   
     
     override func loadView() {
         let view = UIView()
