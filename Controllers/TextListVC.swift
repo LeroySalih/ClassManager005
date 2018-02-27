@@ -34,6 +34,16 @@ class TextListVC : UIViewController {
         
     }()
     
+    var addButton:UIButton = {
+        
+        var button:UIButton = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        
+        return button
+    }()
+    
     // Will hold each list item
     var textListStackView : UIStackView = {
         
