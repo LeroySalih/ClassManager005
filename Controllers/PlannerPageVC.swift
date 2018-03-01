@@ -9,8 +9,19 @@
 import Foundation
 import UIKit
 
-class PlannerPageVC : UIViewController
+class PlannerPageVC : UIViewController, TextListVCDelegate
 {
+    var textListVCDelegate:TextListVCDelegate?
+    
+    func onAddButtonPressed() {
+        
+        print ("[PlannerPageVC]onAddButtonPressed add button pressed")
+        guard let d = textListVCDelegate else { return }
+        d.onAddButtonPressed()
+        
+        
+    }
+    
     //////////////////////////////////////////
     // UI Components
     //////////////////////////////////////////
@@ -74,10 +85,70 @@ class PlannerPageVC : UIViewController
         return view
     }()
     
+    var editTextView: UIView = {
+        
+        var view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .blue
+        
+        return view
+    }()
+    
+    var editTextBox : UITextView = {
+        
+        var text = UITextView()
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.keyboardType = .default
+        
+        return text
+    }()
+    
+    var editButtonBarView:UIView = {
+        
+        var view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .yellow
+        return view
+    }()
+    
+    var editButton:UIButton = {
+        
+        var button = UIButton(frame: CGRect(x:0, y:0, width: 50, height: 30))
+        button.setTitle("Edit", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(onEditButtonClicked), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc
+    func onEditButtonClicked(){
+        print("Clicked")
+        var top:CGFloat = 0
+        
+        if !isShowingEditView {
+            top = -60
+            editButton.setTitle("Hide", for: .normal)
+            startAvoidingKeyboard()
+        } else {
+            top = -30
+            editButton.setTitle("Edit", for: .normal)
+            stopAvoidingKeyboard()
+        }
+        
+        isShowingEditView = !isShowingEditView
+        
+        UIView.animate(withDuration: Double(0.25), animations: {
+            self.editTextViewTopConstraint?.constant = top
+            self.view.layoutIfNeeded()
+        })
+    }
+    
     //////////////////////////////////////////
     // View Controller State
     //////////////////////////////////////////
     
+    var isShowingEditView:Bool = false
+    var editTextViewTopConstraint:NSLayoutConstraint?
     public var plannerSlot:PlannerSlot? {
         didSet {
             // Update the View.
@@ -98,6 +169,7 @@ class PlannerPageVC : UIViewController
         let vc:TextListVC = TextListVC()
         vc.label = "Learning Objectives"
         vc.list = ["Item 1", "Item 2", "Item 3"]
+        
         return vc
     }()
     
@@ -107,7 +179,7 @@ class PlannerPageVC : UIViewController
         vc.list = ["Item 1", "Item 2", "Item 3"]
         return vc
     }()
-    
+
     var plannerPageHeaderVC : PlannerPageHeaderVC = {
         
         let vc:PlannerPageHeaderVC = PlannerPageHeaderVC()
@@ -118,6 +190,9 @@ class PlannerPageVC : UIViewController
     override func loadView() {
         print ("[PlannerPage] Creating Planner Page View")
         
+        editTextView.addSubview(editTextBox)
+        editButtonBarView.addSubview(editButton)
+        
         plannerPageHeaderVC.didMove(toParentViewController: self)
         learningObjectivesListVC.didMove(toParentViewController: self)
         resourcesListVC.didMove(toParentViewController: self)
@@ -126,16 +201,26 @@ class PlannerPageVC : UIViewController
         pageStackView.addArrangedSubview(headingBorderView)
         pageStackView.addArrangedSubview(learningObjectivesListVC.view)
         pageStackView.addArrangedSubview(resourcesListVC.view)
+         pageOuterView.addSubview(pageStackView)
         
         pageOuterView.addSubview(pageInnerView)
-        pageOuterView.addSubview(pageStackView)
+        
+        pageInnerView.addSubview(editTextView)
+        pageInnerView.addSubview(editButtonBarView)
+        
+        
+        learningObjectivesListVC.delegate = self
         
         self.view = pageOuterView
     }
     
+    
+    
     override func viewDidLoad() {
     
         print ("[Planner Page] View loaded")
+        
+        editTextViewTopConstraint = editTextView.topAnchor.constraint(equalTo: pageInnerView.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         
         let constraints:[NSLayoutConstraint] = [
            
@@ -146,6 +231,24 @@ class PlannerPageVC : UIViewController
             pageInnerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             pageInnerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             pageInnerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            
+            editButtonBarView.topAnchor.constraint(equalTo: pageInnerView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            editButtonBarView.leadingAnchor.constraint(equalTo: pageInnerView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            editButtonBarView.trailingAnchor.constraint(equalTo: pageInnerView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            editButtonBarView.heightAnchor.constraint(equalToConstant: 30),
+            
+            editTextViewTopConstraint!,
+            
+            editTextView.leadingAnchor.constraint(equalTo: pageInnerView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            editTextView.trailingAnchor.constraint(equalTo: pageInnerView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            editTextView.heightAnchor.constraint(equalToConstant: 30),
+            
+            editTextBox.topAnchor.constraint(equalTo: editTextView.topAnchor, constant: 5),
+            editTextBox.bottomAnchor.constraint(equalTo: editTextView.bottomAnchor, constant: -5),
+            editTextBox.leadingAnchor.constraint(equalTo: editTextView.leadingAnchor, constant: 5),
+            editTextBox.trailingAnchor.constraint(equalTo: editTextView.trailingAnchor, constant: -5),
+            
+            
             
             pageStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             pageStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),

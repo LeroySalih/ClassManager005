@@ -9,7 +9,17 @@
 import UIKit
 import FirebaseFirestore
 
-class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate {
+class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate, TextListVCDelegate {
+    
+    
+    func onAddButtonPressed() {
+        print ("[BaseViewController]onAddButtonPressed")
+        plannerEditPageVC.modalPresentationStyle = .overFullScreen
+        plannerPageVC.present(plannerEditPageVC, animated: true) {
+            print ("Edit Page Completed")
+        }
+    }
+    
     
     var db:Firestore!
 
@@ -33,7 +43,9 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     }()
     
     
-    
+    var plannerEditPageVC:PlannerPageEditVC = {
+        return PlannerPageEditVC()
+    }()
     
     var sideMenuBarVC:SideMenuVC = {
         var sideMenuVC = SideMenuVC()
@@ -158,6 +170,7 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         addSubviewController(vc: plannerSlotsVC)
         plannerSlotsVC.plannerSlotDelegate = self
         
+        plannerPageVC.textListVCDelegate = self
         addSubviewController(vc: plannerPageVC)
         
         NSLayoutConstraint.activate([

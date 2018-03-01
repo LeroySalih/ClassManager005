@@ -12,6 +12,8 @@ import UIKit
 // This View Controller will display the list of items....
 class TextListVC : UIViewController {
     
+    var delegate:TextListVCDelegate?
+    
     var list:[String] = [] {
         didSet {
             buildStackView()
@@ -34,13 +36,22 @@ class TextListVC : UIViewController {
         
     }()
     
+    @objc
+    func onAddButtonPressed (){
+        
+        print ("[TextListVC]::onAddButtonPressed Add Button Pressed")
+        guard let d = self.delegate else {return }
+        print ("Calling Parent delegate")
+        d.onAddButtonPressed()
+        
+    }
     var addButton:UIButton = {
         
         var button:UIButton = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        
+        button.addTarget(self, action: #selector(onAddButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -62,7 +73,13 @@ class TextListVC : UIViewController {
             subView.removeFromSuperview()
         }
         
-        textListStackView.addArrangedSubview(listTitleLabel)
+        let titleStackView:UIStackView = UIStackView()
+        titleStackView.axis = .horizontal
+        titleStackView.spacing = 8
+        titleStackView.addArrangedSubview(listTitleLabel)
+        titleStackView.addArrangedSubview(addButton)
+        
+        textListStackView.addArrangedSubview(titleStackView)
         
         // Add each item
         list.forEach { (item) in

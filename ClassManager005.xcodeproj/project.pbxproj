@@ -25,6 +25,9 @@
 		496A042720388BF300A3E007 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A042620388BF200A3E007 /* Roboto-Light.ttf */; };
 		49806CB220413E4C0067D485 /* TextListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB120413E4C0067D485 /* TextListVC.swift */; };
 		49806CB42041BCC90067D485 /* PlannerPageHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */; };
+		49844E7E2045B752000E15AA /* TextListVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49844E7D2045B752000E15AA /* TextListVCDelegate.swift */; };
+		49844E802045BBA6000E15AA /* PlannerPageEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49844E7F2045BBA6000E15AA /* PlannerPageEditVC.swift */; };
+		49844E822045BD94000E15AA /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49844E812045BD94000E15AA /* UIView.swift */; };
 		49938994203800E30011C512 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938993203800E30011C512 /* UIViewController.swift */; };
 		49938996203804E90011C512 /* SerialiserProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49938995203804E90011C512 /* SerialiserProgressDelegate.swift */; };
 		4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45920334735005B34D5 /* UILabelVA.swift */; };
@@ -69,6 +72,9 @@
 		496A042620388BF200A3E007 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		49806CB120413E4C0067D485 /* TextListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVC.swift; sourceTree = "<group>"; };
 		49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageHeaderVC.swift; sourceTree = "<group>"; };
+		49844E7D2045B752000E15AA /* TextListVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVCDelegate.swift; sourceTree = "<group>"; };
+		49844E7F2045BBA6000E15AA /* PlannerPageEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageEditVC.swift; sourceTree = "<group>"; };
+		49844E812045BD94000E15AA /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		49938993203800E30011C512 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		49938995203804E90011C512 /* SerialiserProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialiserProgressDelegate.swift; sourceTree = "<group>"; };
 		4999E45920334735005B34D5 /* UILabelVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelVA.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				499A86E620354D6700FDB99B /* SideMenuDelegate.swift */,
 				49938995203804E90011C512 /* SerialiserProgressDelegate.swift */,
 				490AD805203DE2D000FE3986 /* DocumentSerializable.swift */,
+				49844E7D2045B752000E15AA /* TextListVCDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -195,6 +202,7 @@
 				499A86E42034BD3500FDB99B /* PlannerPageVC.swift */,
 				49806CB120413E4C0067D485 /* TextListVC.swift */,
 				49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */,
+				49844E7F2045BBA6000E15AA /* PlannerPageEditVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 				49938993203800E30011C512 /* UIViewController.swift */,
 				490510B62038976D00D48F1B /* UIFont.swift */,
 				490510B820389A8B00D48F1B /* UIColor.swift */,
+				49844E812045BD94000E15AA /* UIView.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 				4902384B202A2FA2002DEE70 /* PlannerSlotView.swift in Sources */,
 				490975F2202A0DEB00DDA5B2 /* BaseViewController.swift in Sources */,
 				49806CB220413E4C0067D485 /* TextListVC.swift in Sources */,
+				49844E822045BD94000E15AA /* UIView.swift in Sources */,
 				49FC373D2036FF0E003FE0B9 /* PlannerSlotSerialiser.swift in Sources */,
 				4902384D202AE76E002DEE70 /* PlannerPageView.swift in Sources */,
 				4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */,
@@ -409,6 +419,7 @@
 				490975F0202A0DEB00DDA5B2 /* AppDelegate.swift in Sources */,
 				490AD806203DE2D000FE3986 /* DocumentSerializable.swift in Sources */,
 				499A86D620349BD800FDB99B /* Lesson.swift in Sources */,
+				49844E7E2045B752000E15AA /* TextListVCDelegate.swift in Sources */,
 				499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */,
 				49FC373B2036FE68003FE0B9 /* TeacherTimetable.swift in Sources */,
 				4917B4A8203047950048F1A3 /* PlannerPageHeader.swift in Sources */,
@@ -419,6 +430,7 @@
 				4999E45C20334949005B34D5 /* TextListView.swift in Sources */,
 				49938994203800E30011C512 /* UIViewController.swift in Sources */,
 				499A86DC20349C7F00FDB99B /* Periods.swift in Sources */,
+				49844E802045BBA6000E15AA /* PlannerPageEditVC.swift in Sources */,
 				499A86E32034BAF900FDB99B /* SideMenuVC.swift in Sources */,
 				490510B72038976D00D48F1B /* UIFont.swift in Sources */,
 				499A86DF20349D2400FDB99B /* ReceivePlannerSlots.swift in Sources */,
