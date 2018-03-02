@@ -191,11 +191,12 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
              plannerSlotsVC.view.widthAnchor.constraint(equalToConstant: 200),
              plannerSlotsVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -SPACER),
             
+             
              plannerPageVC.view.topAnchor.constraint(equalTo: menuBarVC.view.bottomAnchor, constant: SPACER),
              plannerPageVC.view.leadingAnchor.constraint(equalTo: plannerSlotsVC.view.trailingAnchor, constant: SPACER),
              plannerPageVC.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -SPACER),
              plannerPageVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -SPACER)
-             
+ 
         ])
         
         
@@ -278,10 +279,10 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     //  SideMenuDelegate Functions
     //
     ///////////////////////////////
-    func onPlannerCellClicked(_ plannerSlot: PlannerSlot?, sender: PlannerSlotView) {
+    func onPlannerCellClicked(_ plannerSlot: PlannerSlot) {
         print("[BaseViewController] Received Planner Slot Clicked")
         plannerPageVC.plannerSlot = plannerSlot
-    //    displayPageView.plannerSlot = plannerSlot
+    
     }
     
     ///////////////////////////////

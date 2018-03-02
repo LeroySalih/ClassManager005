@@ -96,7 +96,7 @@ class PlannerSlotView : UIView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let dateFormatter:DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-        delegate?.onPlannerCellClicked(plannerSlot!, sender: self)
+        delegate?.onPlannerCellClicked(plannerSlot!)
         //print ("Touched \(dateFormatter.string(from: plannerSlot!.start))")
     }
     

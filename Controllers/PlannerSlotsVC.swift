@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegate
+class PlannerSlotsOldVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegate
 {
     var plannerSlotsStackView:UIStackView = UIStackView()
     
@@ -25,7 +25,14 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
         }
     }
     
-    
+    var scrollView : UIScrollView = {
+        
+        var scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentSize = CGSize(width: 250, height: 1000)
+        return scrollView
+        
+    }()
         
     func createStackView() -> UIStackView {
         let stackView = UIStackView()
@@ -65,24 +72,34 @@ class PlannerSlotsVC : UIViewController, ReceivePlannerSlots, PlannerSlotDelegat
         plannerSlotsStackView = buildPlannerSlotsStackView()
         plannerSlotsStackView.backgroundColor = .white
         
-        // Add StackView to the View Hierachy
-        self.view.addSubview(plannerSlotsStackView)
+        // Add the StackView to the ScrollView
+        scrollView.addSubview(plannerSlotsStackView)
+        
+        // Add ScrollView to the View Hierachy
+        self.view.addSubview(scrollView)
         
         // Establish Constraints to display the StackView
         NSLayoutConstraint.activate([
-            plannerSlotsStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 5),
-            plannerSlotsStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            plannerSlotsStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-            plannerSlotsStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -5)
+            
+            scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            
+            
+            plannerSlotsStackView.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor, constant: 5),
+            plannerSlotsStackView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            plannerSlotsStackView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            plannerSlotsStackView.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor, constant: -5)
             ])
     }
     
     override func loadView() {
         
         print("[PlannerSlotsVC] Loading View")
-        let v = UIView()
+       let v = UIView()
         
-        self.view = v
+        self.view =  v
         
     }
     

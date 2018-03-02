@@ -152,8 +152,9 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
     public var plannerSlot:PlannerSlot? {
         didSet {
             // Update the View.
-            print ("[PlannerPage] Assigning Planner Slot to View")
+            
             guard let ps = plannerSlot else {return }
+            print ("[PlannerPage] Assigning Planner Slot to View \(ps.className)")
             plannerPageHeaderVC.plannerSlot = ps
             learningObjectivesListVC.list = ps.learningObjectives
             resourcesListVC.list = ps.resources
@@ -201,9 +202,8 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
         pageStackView.addArrangedSubview(headingBorderView)
         pageStackView.addArrangedSubview(learningObjectivesListVC.view)
         pageStackView.addArrangedSubview(resourcesListVC.view)
-         pageOuterView.addSubview(pageStackView)
-        
         pageOuterView.addSubview(pageInnerView)
+        pageOuterView.addSubview(pageStackView)
         
         pageInnerView.addSubview(editTextView)
         pageInnerView.addSubview(editButtonBarView)
@@ -227,6 +227,7 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
             headingBorderView.heightAnchor.constraint(equalToConstant: 5),
             headingBorderView.leadingAnchor.constraint(equalTo: pageStackView.leadingAnchor),
             headingBorderView.trailingAnchor.constraint(equalTo: pageStackView.trailingAnchor),
+            
             pageInnerView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 20),
             pageInnerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             pageInnerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -247,8 +248,6 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
             editTextBox.bottomAnchor.constraint(equalTo: editTextView.bottomAnchor, constant: -5),
             editTextBox.leadingAnchor.constraint(equalTo: editTextView.leadingAnchor, constant: 5),
             editTextBox.trailingAnchor.constraint(equalTo: editTextView.trailingAnchor, constant: -5),
-            
-            
             
             pageStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             pageStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),

@@ -23,6 +23,7 @@
 		4917B4A8203047950048F1A3 /* PlannerPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917B4A7203047950048F1A3 /* PlannerPageHeader.swift */; };
 		496A0424203889A600A3E007 /* build.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A04232038898B00A3E007 /* build.ttf */; };
 		496A042720388BF300A3E007 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A042620388BF200A3E007 /* Roboto-Light.ttf */; };
+		4978F64020493EF200BC608C /* PlannerSlots2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978F63F20493EF200BC608C /* PlannerSlots2VC.swift */; };
 		49806CB220413E4C0067D485 /* TextListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB120413E4C0067D485 /* TextListVC.swift */; };
 		49806CB42041BCC90067D485 /* PlannerPageHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */; };
 		49844E7E2045B752000E15AA /* TextListVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49844E7D2045B752000E15AA /* TextListVCDelegate.swift */; };
@@ -33,7 +34,6 @@
 		4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45920334735005B34D5 /* UILabelVA.swift */; };
 		4999E45C20334949005B34D5 /* TextListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45B20334949005B34D5 /* TextListView.swift */; };
 		4999E45E2033F5B2005B34D5 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999E45D2033F5B2005B34D5 /* ResourcesView.swift */; };
-		499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86D12034952B00FDB99B /* PlannerSlotsVC.swift */; };
 		499A86D420349BAF00FDB99B /* PlannerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86D320349BAF00FDB99B /* PlannerDay.swift */; };
 		499A86D620349BD800FDB99B /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86D520349BD800FDB99B /* Lesson.swift */; };
 		499A86D820349BFF00FDB99B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A86D720349BFF00FDB99B /* Resource.swift */; };
@@ -70,6 +70,7 @@
 		4917B4A7203047950048F1A3 /* PlannerPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageHeader.swift; sourceTree = "<group>"; };
 		496A04232038898B00A3E007 /* build.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = build.ttf; sourceTree = "<group>"; };
 		496A042620388BF200A3E007 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		4978F63F20493EF200BC608C /* PlannerSlots2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlots2VC.swift; sourceTree = "<group>"; };
 		49806CB120413E4C0067D485 /* TextListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVC.swift; sourceTree = "<group>"; };
 		49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageHeaderVC.swift; sourceTree = "<group>"; };
 		49844E7D2045B752000E15AA /* TextListVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVCDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		4999E45920334735005B34D5 /* UILabelVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelVA.swift; sourceTree = "<group>"; };
 		4999E45B20334949005B34D5 /* TextListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListView.swift; sourceTree = "<group>"; };
 		4999E45D2033F5B2005B34D5 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
-		499A86D12034952B00FDB99B /* PlannerSlotsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlotsVC.swift; sourceTree = "<group>"; };
 		499A86D320349BAF00FDB99B /* PlannerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDay.swift; sourceTree = "<group>"; };
 		499A86D520349BD800FDB99B /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		499A86D720349BFF00FDB99B /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -196,13 +196,13 @@
 			isa = PBXGroup;
 			children = (
 				490975F1202A0DEB00DDA5B2 /* BaseViewController.swift */,
-				499A86D12034952B00FDB99B /* PlannerSlotsVC.swift */,
 				499A86E02034B43E00FDB99B /* MenuBarVC.swift */,
 				499A86E22034BAF900FDB99B /* SideMenuVC.swift */,
 				499A86E42034BD3500FDB99B /* PlannerPageVC.swift */,
 				49806CB120413E4C0067D485 /* TextListVC.swift */,
 				49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */,
 				49844E7F2045BBA6000E15AA /* PlannerPageEditVC.swift */,
+				4978F63F20493EF200BC608C /* PlannerSlots2VC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -420,7 +420,6 @@
 				490AD806203DE2D000FE3986 /* DocumentSerializable.swift in Sources */,
 				499A86D620349BD800FDB99B /* Lesson.swift in Sources */,
 				49844E7E2045B752000E15AA /* TextListVCDelegate.swift in Sources */,
-				499A86D22034952B00FDB99B /* PlannerSlotsVC.swift in Sources */,
 				49FC373B2036FE68003FE0B9 /* TeacherTimetable.swift in Sources */,
 				4917B4A8203047950048F1A3 /* PlannerPageHeader.swift in Sources */,
 				49023850202AEE32002DEE70 /* PlannerSlotDelegate.swift in Sources */,
@@ -429,6 +428,7 @@
 				4999E45A20334735005B34D5 /* UILabelVA.swift in Sources */,
 				4999E45C20334949005B34D5 /* TextListView.swift in Sources */,
 				49938994203800E30011C512 /* UIViewController.swift in Sources */,
+				4978F64020493EF200BC608C /* PlannerSlots2VC.swift in Sources */,
 				499A86DC20349C7F00FDB99B /* Periods.swift in Sources */,
 				49844E802045BBA6000E15AA /* PlannerPageEditVC.swift in Sources */,
 				499A86E32034BAF900FDB99B /* SideMenuVC.swift in Sources */,

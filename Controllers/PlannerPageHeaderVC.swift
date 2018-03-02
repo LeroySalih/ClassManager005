@@ -108,6 +108,7 @@ class PlannerPageHeaderVC : UIViewController {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
+        headerStackView.backgroundColor = .blue
         headerClassStackView.addArrangedSubview(classLabel)
         headerClassStackView.addArrangedSubview(roomLabel)
         
@@ -125,6 +126,7 @@ class PlannerPageHeaderVC : UIViewController {
     
     func updateUI(){
         
+        print ("[PlannerPageHeaderVC] updating UI \(plannerSlot?.className)")
         guard let ps = plannerSlot else { return }
         
         classLabel.text = ps.className
@@ -137,7 +139,7 @@ class PlannerPageHeaderVC : UIViewController {
         roomLabel.font = UIFont(name: "Avenir", size: 20)
         //roomLabel.sizeToFit()
         
-        subjectLabel.text = ps.subject
+        subjectLabel.text =  ps.subject
         subjectLabel.font = UIFont(name: "Avenir", size: 20)
         subjectLabel.sizeToFit()
         

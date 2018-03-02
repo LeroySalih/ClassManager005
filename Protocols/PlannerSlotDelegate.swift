@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PlannerSlotDelegate: class {
-    func onPlannerCellClicked (_ plannerSlot: PlannerSlot?, sender: PlannerSlotView)
+    func onPlannerCellClicked (_ plannerSlot: PlannerSlot)
 }
