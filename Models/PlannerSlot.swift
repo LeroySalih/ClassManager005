@@ -12,6 +12,8 @@ import FirebaseFirestore
 
 struct PlannerSlot {
     
+    
+    public var key:String?
     public var start:Date = Date()
     public var end:Date = Date()
     public var title:String = "Not Set"
@@ -65,7 +67,9 @@ extension PlannerSlot : DocumentSerializable {
             return nil
                 }
         
-        self.init(  start: start,
+        self.init(
+                    key:"Not Set",
+                    start: start,
                     end: end,
                     title: title,
                     className:
@@ -77,8 +81,39 @@ extension PlannerSlot : DocumentSerializable {
                     learningObjectives:learningObjectives,
                     resources: resources)
         
-    }
+        }
+    
+}
+
+extension PlannerSlot {
+    
+    init(
+        start: Date,
+        end: Date,
+        title: String,
+        className: String,
+        roomName: String,
+        subject: String,
+        unit: String,
+        lesson: String,
+        learningObjectives:[String],
+        resources: [String]){
         
+        
+        self.init(
+            key:"Not Set",
+            start: start,
+            end: end,
+            title: title,
+            className:
+            className,
+            roomName: roomName,
+            subject: subject,
+            unit: unit,
+            lesson: lesson,
+            learningObjectives:learningObjectives,
+            resources: resources)
+    }
     
 }
 

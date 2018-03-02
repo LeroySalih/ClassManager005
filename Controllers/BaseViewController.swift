@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseFirestore
 
-class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate, TextListVCDelegate {
+class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate, TextListVCDelegate, PlannerPageDelegate {
     
     
     func onAddButtonPressed() {
@@ -132,7 +132,9 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
                     print ("[BaseViewController]::loadPlannerSlots. Found \(snapshot?.documents.count) Planner Slots")
                     
                     self.plannerSlots = (snapshot?.documents.flatMap({ (document) -> PlannerSlot? in
-                        return PlannerSlot(dictionary: document.data())
+                        var ps = PlannerSlot(dictionary: document.data())
+                        ps?.key = document.documentID
+                        return ps
                     }))!
                     
                     self.plannerSlotsVC.plannerSlots = self.plannerSlots
@@ -169,8 +171,11 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
         
         addSubviewController(vc: plannerSlotsVC)
         plannerSlotsVC.plannerSlotDelegate = self
+        plannerSlotsVC.startAvoidingKeyboard()
         
         plannerPageVC.textListVCDelegate = self
+        plannerPageVC.plannerPageDelegate = self
+        
         addSubviewController(vc: plannerPageVC)
         
         NSLayoutConstraint.activate([
@@ -309,7 +314,15 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
             print ("There are \(remaining) items to write")
         }
     }
-
-
+    
+    ///////////////////////////////
+    // PlannerPageDelegate Functions
+    //
+    ///////////////////////////////
+    
+    func onNewLearningObjective(lo: String) {
+        print("[BaseViewController]:: Adding onNewLearningObjective \(lo)")
+    }
+    
 }
 

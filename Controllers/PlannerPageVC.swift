@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class PlannerPageVC : UIViewController, TextListVCDelegate
+class PlannerPageVC : UIViewController, TextListVCDelegate, UITextViewDelegate
 {
-    var textListVCDelegate:TextListVCDelegate?
+    public var textListVCDelegate:TextListVCDelegate?
+    public var plannerPageDelegate:PlannerPageDelegate?
     
     func onAddButtonPressed() {
         
@@ -123,32 +124,39 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
     @objc
     func onEditButtonClicked(){
         print("Clicked")
-        var top:CGFloat = 0
-        
-        if !isShowingEditView {
-            top = -60
-            editButton.setTitle("Hide", for: .normal)
-            startAvoidingKeyboard()
-        } else {
-            top = -30
-            editButton.setTitle("Edit", for: .normal)
-            stopAvoidingKeyboard()
-        }
         
         isShowingEditView = !isShowingEditView
-        
-        UIView.animate(withDuration: Double(0.25), animations: {
-            self.editTextViewTopConstraint?.constant = top
-            self.view.layoutIfNeeded()
-        })
+    
     }
     
     //////////////////////////////////////////
     // View Controller State
     //////////////////////////////////////////
     
-    var isShowingEditView:Bool = false
+    var isShowingEditView:Bool = false {
+        didSet {
+            var top:CGFloat = 0
+            
+            if !isShowingEditView {
+                top = -60
+                self.editButton.setTitle("Hide", for: .normal)
+                editTextBox.text = ""
+                startAvoidingKeyboard()
+            } else {
+                top = -30
+                self.editButton.setTitle("Edit", for: .normal)
+                stopAvoidingKeyboard()
+            }
+            
+            UIView.animate(withDuration: Double(0.25), animations: {
+                self.editTextViewTopConstraint?.constant = top
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
     var editTextViewTopConstraint:NSLayoutConstraint?
+    
+    
     public var plannerSlot:PlannerSlot? {
         didSet {
             // Update the View.
@@ -192,6 +200,7 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
         print ("[PlannerPage] Creating Planner Page View")
         
         editTextView.addSubview(editTextBox)
+        editTextBox.delegate = self
         editButtonBarView.addSubview(editButton)
         
         plannerPageHeaderVC.didMove(toParentViewController: self)
@@ -259,7 +268,29 @@ class PlannerPageVC : UIViewController, TextListVCDelegate
         }
         
         NSLayoutConstraint.activate(constraints)
-
-        
     }
+    
+    /* Updated for Swift 4 */
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if text != "\n" { return true }
+        
+        textView.resignFirstResponder()
+        
+        guard let d = plannerPageDelegate else {
+            print ("[PlannerPageVC]:: no delegate for new learning objective")
+            return false
+            
+        }
+        
+        isShowingEditView = !isShowingEditView
+        
+        d.onNewLearningObjective(lo: textView.text)
+        
+        
+        
+        return false
+    }
+    
+    
 }
