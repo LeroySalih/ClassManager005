@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PlannerPageDelegate {
-    func onNewLearningObjective(lo:String)
+    func onNewLearningObjective(plannerSlot:PlannerSlot)
 }

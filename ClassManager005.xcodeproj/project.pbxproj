@@ -24,7 +24,7 @@
 		496A0424203889A600A3E007 /* build.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A04232038898B00A3E007 /* build.ttf */; };
 		496A042720388BF300A3E007 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 496A042620388BF200A3E007 /* Roboto-Light.ttf */; };
 		4978F64020493EF200BC608C /* PlannerSlots2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978F63F20493EF200BC608C /* PlannerSlots2VC.swift */; };
-		4978F642204997A200BC608C /* PlannePageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978F641204997A200BC608C /* PlannePageDelegate.swift */; };
+		4978F642204997A200BC608C /* PlannerPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978F641204997A200BC608C /* PlannerPageDelegate.swift */; };
 		49806CB220413E4C0067D485 /* TextListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB120413E4C0067D485 /* TextListVC.swift */; };
 		49806CB42041BCC90067D485 /* PlannerPageHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */; };
 		49844E7E2045B752000E15AA /* TextListVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49844E7D2045B752000E15AA /* TextListVCDelegate.swift */; };
@@ -72,7 +72,7 @@
 		496A04232038898B00A3E007 /* build.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = build.ttf; sourceTree = "<group>"; };
 		496A042620388BF200A3E007 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		4978F63F20493EF200BC608C /* PlannerSlots2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerSlots2VC.swift; sourceTree = "<group>"; };
-		4978F641204997A200BC608C /* PlannePageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannePageDelegate.swift; sourceTree = "<group>"; };
+		4978F641204997A200BC608C /* PlannerPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageDelegate.swift; sourceTree = "<group>"; };
 		49806CB120413E4C0067D485 /* TextListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVC.swift; sourceTree = "<group>"; };
 		49806CB32041BCC90067D485 /* PlannerPageHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerPageHeaderVC.swift; sourceTree = "<group>"; };
 		49844E7D2045B752000E15AA /* TextListVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextListVCDelegate.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				49938995203804E90011C512 /* SerialiserProgressDelegate.swift */,
 				490AD805203DE2D000FE3986 /* DocumentSerializable.swift */,
 				49844E7D2045B752000E15AA /* TextListVCDelegate.swift */,
-				4978F641204997A200BC608C /* PlannePageDelegate.swift */,
+				4978F641204997A200BC608C /* PlannerPageDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				49844E7E2045B752000E15AA /* TextListVCDelegate.swift in Sources */,
 				49FC373B2036FE68003FE0B9 /* TeacherTimetable.swift in Sources */,
 				4917B4A8203047950048F1A3 /* PlannerPageHeader.swift in Sources */,
-				4978F642204997A200BC608C /* PlannePageDelegate.swift in Sources */,
+				4978F642204997A200BC608C /* PlannerPageDelegate.swift in Sources */,
 				49023850202AEE32002DEE70 /* PlannerSlotDelegate.swift in Sources */,
 				499A86DA20349C1700FDB99B /* LearningObjective.swift in Sources */,
 				49EDD11620359BE1004E0434 /* UILabel.swift in Sources */,

@@ -21,6 +21,26 @@ class PlannerSlotSerialiser {
     }
     
 
+    public func save (db:Firestore, key: String, ps: PlannerSlot){
+        opsRemaining += 1
+        
+        var docRef:DocumentReference? = nil
+        
+        docRef = db.collection("PSlots").document(key)
+        docRef?.setData(ps.dictionary, completion: { (err) in
+            if (err != nil) {
+                print ("Error saving PlannerSlot")
+                self.opsRemaining -= 1
+            } else {
+                print ("Saved")
+                self.opsRemaining -= 1
+            }
+            
+        })
+        
+    }
+    
+    
     public func save (db:Firestore, ps:PlannerSlot) {
         
         opsRemaining += 1
@@ -51,21 +71,6 @@ class PlannerSlotSerialiser {
                 }
                 
             })
-        
-        /*
-            db.collection("PSlots")
-                .document(docId)
-                .collection("Slots")
-                .document(ps.title)
-                .setData(ps.dictionary){ err in
-                    self.opsRemaining -= 1
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    } else {
-                        print("\(ps.start) Document successfully written!")
-                    }
-            }
-         */
         
     }
     

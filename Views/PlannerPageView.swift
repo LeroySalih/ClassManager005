@@ -214,6 +214,7 @@ class PlannerPageView : UIView
     
     public var plannerSlot: PlannerSlot! {
         didSet {
+            
             // remove the sub views
             subviews.forEach({$0.removeFromSuperview()})
             

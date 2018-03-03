@@ -160,7 +160,7 @@ class PlannerPageVC : UIViewController, TextListVCDelegate, UITextViewDelegate
     public var plannerSlot:PlannerSlot? {
         didSet {
             // Update the View.
-            
+            print ("[PlannerPageVC]::plannerSlot received \(plannerSlot?.key)")
             guard let ps = plannerSlot else {return }
             print ("[PlannerPage] Assigning Planner Slot to View \(ps.className)")
             plannerPageHeaderVC.plannerSlot = ps
@@ -284,9 +284,12 @@ class PlannerPageVC : UIViewController, TextListVCDelegate, UITextViewDelegate
         }
         
         isShowingEditView = !isShowingEditView
+        var newPlannerSlot:PlannerSlot = plannerSlot!
+            newPlannerSlot.learningObjectives.append(textView.text)
         
-        d.onNewLearningObjective(lo: textView.text)
+        self.plannerSlot = newPlannerSlot
         
+        d.onNewLearningObjective(plannerSlot: newPlannerSlot)
         
         
         return false

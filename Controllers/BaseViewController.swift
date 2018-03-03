@@ -12,6 +12,8 @@ import FirebaseFirestore
 class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegate, SerialiserProgressDelegate, TextListVCDelegate, PlannerPageDelegate {
     
     
+    
+    
     func onAddButtonPressed() {
         print ("[BaseViewController]onAddButtonPressed")
         plannerEditPageVC.modalPresentationStyle = .overFullScreen
@@ -320,8 +322,12 @@ class BaseViewController: UIViewController, PlannerSlotDelegate, SideMenuDelegat
     //
     ///////////////////////////////
     
-    func onNewLearningObjective(lo: String) {
-        print("[BaseViewController]:: Adding onNewLearningObjective \(lo)")
+    func onNewLearningObjective(plannerSlot: PlannerSlot) {
+        print("[BaseViewController]:: Adding onNewLearningObjective \(plannerSlot.key)")
+        let psSerialise:PlannerSlotSerialiser = PlannerSlotSerialiser()
+        psSerialise.progressDelegate = self
+        psSerialise.save(db: db, key: plannerSlot.key!, ps: plannerSlot)
+        
     }
     
 }
